@@ -55,7 +55,7 @@ const Skills = () => {
       <Reveal>
           <h2 className="text-3xl font-bold mb-4 text-center">Habilidades</h2>
           <p className="text-center mb-8">
-            Trabajé en varios proyectos frontend y fullstack. Puedes revisarlos <a href="#" className="underline">aquí</a>.
+            Trabajé en varios proyectos frontend y fullstack. Puedes revisarlos <a href="#portfolio" className="underline">aquí</a>.
           </p>
 
           <div className="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8">

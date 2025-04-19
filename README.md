@@ -1,12 +1,57 @@
-# React + Vite
+Portafolio Personal en React
+¡Bienvenido a mi portafolio personal! Este proyecto está desarrollado con React y diseñado para mostrar mis habilidades, proyectos y experiencia profesional de manera interactiva y atractiva.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📌 Características
+✅ Diseño Responsivo – Compatible con móviles, tablets y desktop.
+✅ Secciones Organizadas – Sobre mí, habilidades, proyectos, experiencia y contacto.
+✅ Animaciones Modernas – Efectos suaves para una mejor experiencia de usuario.
+✅ Optimizado para SEO – Mejor visibilidad en motores de búsqueda.
 
-Currently, two official plugins are available:
+🚀 Tecnologías Utilizadas
+React – Biblioteca principal para la construcción de la interfaz.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Vite – Entorno de desarrollo rápido y optimizado.
 
-## Expanding the ESLint configuration
+Tailwind CSS / Styled Components – Estilizado modular y responsive.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Framer Motion – Para animaciones fluidas.
+
+📦 Instalación
+Clona el repositorio:
+
+bash
+git clone https://github.com/tu-usuario/tu-portafolio.git
+Instala las dependencias:
+
+bash
+npm install
+# o
+yarn install
+Inicia el servidor de desarrollo:
+
+bash
+npm run dev
+# o
+yarn dev
+Abre tu navegador en:
+
+http://localhost:3000
+🌟 Personalización
+Modifica los datos en src/data/projects.js, src/data/skills.js, etc.
+
+Cambia los estilos en src/styles o ajusta Tailwind en tailwind.config.js.
+
+Actualiza el favicon y el metadata en index.html.
+
+📄 Licencia
+Este proyecto está bajo la licencia MIT.
+
+✨ ¡Gracias por visitar mi portafolio! ✨
+
+Si te gustó el proyecto, no dudes en dejar una ⭐ en el repo o conectarte conmigo.
+
+📧 Contacto: tu-email@ejemplo.com
+🔗 LinkedIn: linkedin.com/in/tu-perfil
+
+Hecho con ❤️ y React
+
