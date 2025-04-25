@@ -2,7 +2,7 @@ import React from "react";
 import profilepic from "../assets/profpic.png";
 import { TypeAnimation } from "react-type-animation";
 import ShinyEffect from "./ShinyEffect";
-import { AiOutlineGithub, AiOutlineGitlab, AiOutlineInstagram, AiOutlineLink, AiOutlineLinkedin } from "react-icons/ai";
+import { AiOutlineGithub, AiOutlineGitlab, AiOutlineInstagram, AiOutlineLink, AiOutlineLinkedin, AiOutlineMedium } from "react-icons/ai";
 import { DiCss3, DiHtml5, DiJavascript1, DiLaravel, DiMysql, DiNodejsSmall, DiPhp, DiPython, DiReact } from "react-icons/di";
 import { motion } from "framer-motion";
 
@@ -55,6 +55,10 @@ const Hero = () => {
 
                             <motion.a whileHover={{ scale: 1.2 }} href="https://www.linkedin.com/in/edwin-bonilla-dolores-082081196/" target="_blank">
                                 <AiOutlineLinkedin/>
+                            </motion.a>
+
+                            <motion.a whileHover={{ scale: 1.2 }} href="https://medium.com/@isseikun" target="_blank">
+                                <AiOutlineMedium/>
                             </motion.a>
 
                             <motion.a whileHover={{ scale: 1.2 }} href="https://www.instagram.com/edwindolorez/" target="_blank">
