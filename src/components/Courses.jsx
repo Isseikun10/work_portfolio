@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import course1 from "../assets/course1.jpg";
+import course2 from "../assets/course2.png";
+import course3 from "../assets/course3.jpeg";
 import Reveal from './Reveal';
 import { SiUdemy } from 'react-icons/si';
 
@@ -13,9 +15,28 @@ const cursos = [
         udemy: "https://www.udemy.com/course/react-cero-experto/",
     },
   },
+  {
+    img: course2,
+    title: "Elements of AI",
+    description: "Introduction to AI, Machine Learning, Neural Networks, and more.",
+    links: {
+        site: course2, // Cambiado a la importación directa de la imagen
+        udemy: "https://course.elementsofai.com/es/",
+    },
+  },
+  {
+    img: course3,
+    title: "CCNA R&S: Introduction to Networks",
+    description: "The course introduces the principles and structure of IP addressing and the fundamentals of Ethernet concepts, media, and operations to provide a foundation for the curriculum",
+    links: {
+        site: course3, // Cambiado a la importación directa de la imagen
+        udemy: "https://www.netacad.com/",
+    },
+  },
 ]
 
 const Courses = () => {
+
     const [selectedImage, setSelectedImage] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
