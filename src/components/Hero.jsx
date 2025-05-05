@@ -31,7 +31,7 @@ const Hero = () => {
 
                     <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.5 }} className="text-gray-200 md:text-7xl text-5xl tracking-tight mb-4">
                         HOLA, SOY <br/>
-                        <span className="text-purple-500">EDWIN BONILLA</span>
+                        <span className="text-purple-500"> EDWIN BONILLA DOLORES </span>
                     </motion.p>
 
                     <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 1 }} className="text-gray-300 max-w-[300px] md:max-w-[500px] md:text-2xl text-lg mb-6">

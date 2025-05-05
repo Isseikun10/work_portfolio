@@ -12,7 +12,7 @@ const Footer = () => {
                     <a href="https://www.linkedin.com/in/edwin-bonilla-dolores-082081196/" target="_blank"><FaLinkedin /></a>
                 </div>
             </div>
-            <p className='text-gray-400'>@2025 Edwin Bonilla</p>
+            <p className='text-gray-400'>@2025 Edwin Bonilla Dolores</p>
         </div>
     )
 }
