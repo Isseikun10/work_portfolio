@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import course1 from "../assets/course1.jpg";
-import course2 from "../assets/course2.png";
-import course3 from "../assets/course3.jpeg";
-import course4 from "../assets/course4.jpg";
-import course5 from "../assets/course5.jpg";
-import course6 from "../assets/course6.jpg";
-import course7 from "../assets/course7.jpg";
-import course8 from "../assets/course8.jpg";
-import course9 from "../assets/course9.jpg";
+import course1 from "../assets/Course/course1.jpg";
+import course2 from "../assets/Course/course2.png";
+import course3 from "../assets/Course/course3.jpeg";
+import course4 from "../assets/Course/course4.jpg";
+import course5 from "../assets/Course/course5.jpg";
+import course6 from "../assets/Course/course6.jpg";
+import course7 from "../assets/Course/course7.jpg";
+import course8 from "../assets/Course/course8.jpg";
+import course9 from "../assets/Course/course9.jpg";
 import Reveal from './Reveal';
 import { SiUdemy } from 'react-icons/si';
 
@@ -112,7 +112,7 @@ const Courses = () => {
 
     return (
         <div className='max-w-[1000px] mx-auto p-6 md:my-20' id="courses">
-            <h2 className='text-3xl font-bold text-gray-200 mb-8'>Cursos y Certificados</h2>
+            <h2 className='text-3xl font-bold text-gray-200 mb-8'> Cursos y Certificados </h2>
             
             {/* Modal para mostrar la imagen */}
             { isModalOpen && (

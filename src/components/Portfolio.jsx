@@ -1,18 +1,18 @@
 import React from 'react';
-import project1 from "../assets/project1.png"
+import project1 from "../assets/Project/project1.png"
 import { AiFillGithub, AiOutlineGithub } from 'react-icons/ai'
 import Reveal from './Reveal';
 
 const projects = [
-  {
-    img: project1,
-    title: "Projecto #1 Sistema SIAR",
-    description: "Sistema de Automatización para la generación de Reconocimientos y gafetes",
-    links: {
-        site: "#",
-        github: "#",
+    {
+        img: project1,
+        title: "Projecto #1 Sistema SIAR",
+        description: "Sistema de Automatización para la generación de Reconocimientos y gafetes",
+        links: {
+            site: "#",
+            github: "#",
+        },
     },
-  },
 ]
 
 const Portfolio = () => {
