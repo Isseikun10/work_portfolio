@@ -105,45 +105,34 @@ const Courses = () => {
             <h2 className='text-3xl font-bold text-gray-200 mb-8'>Cursos y Certificados</h2>
             
             {/* Modal para mostrar la imagen */}
-            {isModalOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" onClick={closeModal}>
+            { isModalOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" onClick={ closeModal } >
                     <div className="relative max-w-4xl max-h-full">
-                        <button 
-                            className="absolute -top-10 right-0 text-white text-2xl hover:text-gray-300"
-                            onClick={closeModal}
-                        >
+                        <button className="absolute -top-10 right-0 text-white text-2xl hover:text-gray-300" onClick={ closeModal } >
                             &times;
                         </button>
-                        <img 
-                            src={selectedImage} 
-                            alt="Certificado" 
-                            className="max-w-full max-h-[90vh] object-contain"
-                            onClick={(e) => e.stopPropagation()}
-                        />
+                        <img src={ selectedImage } alt="Certificado" className="max-w-full max-h-[90vh] object-contain" onClick={ (e) => e.stopPropagation() } />
                     </div>
                 </div>
-            )}
+            ) }
 
-            { cursos.map((course, index) => (
-                <Reveal key={index}>
-                    <div className={`flex flex-col md:flex-row ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''} mb-12`}>
+            { cursos.map(( course, index ) => (
+                <Reveal key={ index} >
+                    <div className={`flex flex-col md:flex-row ${ index % 2 !== 0 ? 'md:flex-row-reverse' : '' } mb-12`}>
                         <div className='w-full md:w-1/2 p-4'>
-                            <img src={course.img} alt={course.title} className='w-full h-full object-cover rounded-lg shadow-lg'/>
+                            <img src={ course.img } alt={ course.title } className='w-full h-full object-cover rounded-lg shadow-lg'/>
                         </div>
                         
                         <div className='w-full md:w-1/2 p-4 flex flex-col justify-center'>
                             <h3 className='text-2xl font-semibold text-gray-200 mb-4'> { course.title } </h3>
                             <p className='text-gray-300 mb-4'> { course.description } </p>
                             <div className='flex space-x-4'>
-                                <button 
-                                    onClick={() => openModal(course.links.site)} 
-                                    className='px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300'
-                                >
+                                <button onClick={ () => openModal(course.links.site) } className='px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300' >
                                     Ver Certificado
                                 </button>
 
-                                <a href={course.links.udemy} target="_blank" rel="noopener noreferrer" className='px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300 flex items-center justify-center'>
-                                    <SiUdemy size={20}/>
+                                <a href={ course.links.udemy } target="_blank" rel="noopener noreferrer" className='px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300 flex items-center justify-center' >
+                                    <SiUdemy size={ 20 }/>
                                 </a>
                             </div>
                         </div>
