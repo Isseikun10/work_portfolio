@@ -5,6 +5,8 @@ import course3 from "../assets/course3.jpeg";
 import course4 from "../assets/course4.jpg";
 import course5 from "../assets/course5.jpg";
 import course6 from "../assets/course6.jpg";
+import course7 from "../assets/course7.jpg";
+import course8 from "../assets/course8.jpg";
 import Reveal from './Reveal';
 import { SiUdemy } from 'react-icons/si';
 
@@ -12,7 +14,7 @@ const cursos = [
     {
         img: course1,
         title: "React: De cero a experto ( Hooks y MERN)",
-        description: "Context API, MERN, Hooks, Firestore, JWT, Testing, Autenticaciones, Despliegues, CRUD, Logs, MUI, Multiple Routers...",
+        description: "Context API, MERN, Hooks, Firestore, JWT, Testing, Autenticaciones, Despliegues, CRUD, Logs, MUI, Multiple Routers.",
         links: {
             site: course1, // Cambiado a la importación directa de la imagen
             udemy: "https://www.udemy.com/course/react-cero-experto/",
@@ -30,7 +32,7 @@ const cursos = [
     {
         img: course3,
         title: "CCNA R&S: Introduction to Networks",
-        description: "The course introduces the principles and structure of IP addressing and the fundamentals of Ethernet concepts, media, and operations to provide a foundation for the curriculum",
+        description: "The course introduces the principles and structure of IP addressing and the fundamentals of Ethernet concepts, media, and operations to provide a foundation for the curriculum.",
         links: {
             site: course3, // Cambiado a la importación directa de la imagen
             udemy: "https://www.netacad.com/",
@@ -39,7 +41,7 @@ const cursos = [
     {
         img: course4,
         title: "CSS & JavaScript - Certification Course for Beginners",
-        description: "Learn how to Add Dynamic Client-Side Functions to your Web Pages using CSS & JavaScript",
+        description: "Learn how to Add Dynamic Client-Side Functions to your Web Pages using CSS & JavaScript.",
         links: {
             site: course4, // Cambiado a la importación directa de la imagen
             udemy: "https://www.udemy.com/course/css-javascript-certification-course-for-beginners/",
@@ -48,7 +50,7 @@ const cursos = [
     {
         img: course5,
         title: "React Responsive Portfolio Website - Complete React Project",
-        description: "Build React Portfolio Website, React Context API, Send E-mail from React App, React Hooks, React Packages, React theme",
+        description: "Build React Portfolio Website, React Context API, Send E-mail from React App, React Hooks, React Packages, React theme.",
         links: {
             site: course5, // Cambiado a la importación directa de la imagen
             udemy: "https://www.udemy.com/course/react-responsive-portfolio-website-complete-react-project/",
@@ -61,6 +63,24 @@ const cursos = [
         links: {
             site: course6, // Cambiado a la importación directa de la imagen
             udemy: "https://www.udemy.com/course/react-responsive-portfolio-website-complete-react-project/",
+        },
+    },
+    {
+        img: course7,
+        title: "Git and GitHub Bootcamp for Beginners",
+        description: "Learn the basis essentials of Git and GitHub & get a head start with the most popular Version Control System.",
+        links: {
+            site: course7, // Cambiado a la importación directa de la imagen
+            udemy: "https://www.udemy.com/course/draft/4161352/",
+        },
+    },
+    {
+        img: course8,
+        title: "TailwindCSS from A to Z: Master TailwindCSS Quickly",
+        description: "Get started with Tailwind, a utility-first CSS framework, and master its directives, modules, and code reusability.",
+        links: {
+            site: course8, // Cambiado a la importación directa de la imagen
+            udemy: "https://www.udemy.com/course/learn-tailwind-css-quickly/",
         },
     },
 ]
