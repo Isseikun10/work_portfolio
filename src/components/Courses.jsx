@@ -2,37 +2,67 @@ import React, { useState } from 'react';
 import course1 from "../assets/course1.jpg";
 import course2 from "../assets/course2.png";
 import course3 from "../assets/course3.jpeg";
+import course4 from "../assets/course4.jpg";
+import course5 from "../assets/course5.jpg";
+import course6 from "../assets/course6.jpg";
 import Reveal from './Reveal';
 import { SiUdemy } from 'react-icons/si';
 
 const cursos = [
-  {
-    img: course1,
-    title: "React: De cero a experto ( Hooks y MERN)",
-    description: "Context API, MERN, Hooks, Firestore, JWT, Testing, Autenticaciones, Despliegues, CRUD, Logs, MUI, Multiple Routers...",
-    links: {
-        site: course1, // Cambiado a la importación directa de la imagen
-        udemy: "https://www.udemy.com/course/react-cero-experto/",
+    {
+        img: course1,
+        title: "React: De cero a experto ( Hooks y MERN)",
+        description: "Context API, MERN, Hooks, Firestore, JWT, Testing, Autenticaciones, Despliegues, CRUD, Logs, MUI, Multiple Routers...",
+        links: {
+            site: course1, // Cambiado a la importación directa de la imagen
+            udemy: "https://www.udemy.com/course/react-cero-experto/",
+        },
     },
-  },
-  {
-    img: course2,
-    title: "Elements of AI",
-    description: "Introduction to AI, Machine Learning, Neural Networks, and more.",
-    links: {
-        site: course2, // Cambiado a la importación directa de la imagen
-        udemy: "https://course.elementsofai.com/es/",
+    {
+        img: course2,
+        title: "Elements of AI",
+        description: "Introduction to AI, Machine Learning, Neural Networks, and more.",
+        links: {
+            site: course2, // Cambiado a la importación directa de la imagen
+            udemy: "https://course.elementsofai.com/es/",
+        },
     },
-  },
-  {
-    img: course3,
-    title: "CCNA R&S: Introduction to Networks",
-    description: "The course introduces the principles and structure of IP addressing and the fundamentals of Ethernet concepts, media, and operations to provide a foundation for the curriculum",
-    links: {
-        site: course3, // Cambiado a la importación directa de la imagen
-        udemy: "https://www.netacad.com/",
+    {
+        img: course3,
+        title: "CCNA R&S: Introduction to Networks",
+        description: "The course introduces the principles and structure of IP addressing and the fundamentals of Ethernet concepts, media, and operations to provide a foundation for the curriculum",
+        links: {
+            site: course3, // Cambiado a la importación directa de la imagen
+            udemy: "https://www.netacad.com/",
+        },
     },
-  },
+    {
+        img: course4,
+        title: "CSS & JavaScript - Certification Course for Beginners",
+        description: "Learn how to Add Dynamic Client-Side Functions to your Web Pages using CSS & JavaScript",
+        links: {
+            site: course4, // Cambiado a la importación directa de la imagen
+            udemy: "https://www.udemy.com/course/css-javascript-certification-course-for-beginners/",
+        },
+    },
+    {
+        img: course5,
+        title: "React Responsive Portfolio Website - Complete React Project",
+        description: "Build React Portfolio Website, React Context API, Send E-mail from React App, React Hooks, React Packages, React theme",
+        links: {
+            site: course5, // Cambiado a la importación directa de la imagen
+            udemy: "https://www.udemy.com/course/react-responsive-portfolio-website-complete-react-project/",
+        },
+    },
+    {
+        img: course6,
+        title: "Maestría en JavaScript: Desde Principiante Hasta Experto",
+        description: "Aprende el Lenguaje de Programación Web más usado paso a paso",
+        links: {
+            site: course6, // Cambiado a la importación directa de la imagen
+            udemy: "https://www.udemy.com/course/react-responsive-portfolio-website-complete-react-project/",
+        },
+    },
 ]
 
 const Courses = () => {
