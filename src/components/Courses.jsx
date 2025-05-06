@@ -7,6 +7,7 @@ import course5 from "../assets/course5.jpg";
 import course6 from "../assets/course6.jpg";
 import course7 from "../assets/course7.jpg";
 import course8 from "../assets/course8.jpg";
+import course9 from "../assets/course9.jpg";
 import Reveal from './Reveal';
 import { SiUdemy } from 'react-icons/si';
 
@@ -81,6 +82,15 @@ const cursos = [
         links: {
             site: course8, // Cambiado a la importación directa de la imagen
             udemy: "https://www.udemy.com/course/learn-tailwind-css-quickly/",
+        },
+    },
+    {
+        img: course9,
+        title: "Amazon Elastic Compute Cloud (EC2) Beginners Certification",
+        description: "Learn to Setup, Configure, and Administer EC2 Instances on AWS. Explore Virtualization, Scaling, Elastic IPs, + More.",
+        links: {
+            site: course9, // Cambiado a la importación directa de la imagen
+            udemy: "https://www.udemy.com/course/amazon-elastic-compute-cloud-ec2-beginners/",
         },
     },
 ]
