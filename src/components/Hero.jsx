@@ -5,7 +5,7 @@ import ShinyEffect from "./ShinyEffect";
 import { AiOutlineGithub, AiOutlineGitlab, AiOutlineInstagram, AiOutlineLink, AiOutlineLinkedin, AiOutlineMedium } from "react-icons/ai";
 import { DiCss3, DiHtml5, DiJavascript1, DiLaravel, DiMysql, DiNodejsSmall, DiPhp, DiPython, DiReact } from "react-icons/di";
 import { motion } from "framer-motion";
-import CV from "../assets/CV.pdf";
+import CV from "../assets/Curriculum/CV.pdf";
 
 
 const Hero = () => {
