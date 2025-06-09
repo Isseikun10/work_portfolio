@@ -5,6 +5,7 @@ import ShinyEffect from "./ShinyEffect";
 import { AiOutlineGithub, AiOutlineGitlab, AiOutlineInstagram, AiOutlineLink, AiOutlineLinkedin, AiOutlineMedium } from "react-icons/ai";
 import { DiCss3, DiHtml5, DiJavascript1, DiLaravel, DiMysql, DiNodejsSmall, DiPhp, DiPython, DiReact } from "react-icons/di";
 import { motion } from "framer-motion";
+import CV from "../assets/CV.pdf";
 
 
 const Hero = () => {
@@ -41,7 +42,7 @@ const Hero = () => {
                     <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, delay: 1.5 }} className="flex flex-row items-center gap-6 my-4 md:mb-0">
                         
                         <motion.button whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.3)" }} className="z-10 cursor-pointer font-bold text-gray-200 md:w-auto p-4 border border-purple-400 rounded-xl"                      >
-                            Descargar CV
+                            <a href={CV} download="CV.pdf">Descargar CV</a>
                         </motion.button>
 
                         <div className="flex gap-6 flex-row text-4xl md:text-6xl text-purple-400 z-20">
