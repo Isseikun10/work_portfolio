@@ -8,10 +8,30 @@ import course6 from "../assets/Course/course6.jpg";
 import course7 from "../assets/Course/course7.jpg";
 import course8 from "../assets/Course/course8.jpg";
 import course9 from "../assets/Course/course9.jpg";
+import course10 from "../assets/Course/course10.png";
+import course11 from "../assets/Course/course11.png";
 import Reveal from './Reveal';
 import { SiUdemy } from 'react-icons/si';
 
 const cursos = [
+    {
+        img: course10,
+        title: "Título Profesional",
+        description: "Titulo Profesional por la carrera de Ingeniería en Sistemas Computacionales.",      
+        links: {
+            site: course10, // Cambiado a la importación directa de la imagen
+            udemy: "https://www.cedulaprofesional.sep.gob.mx/cedula/presidencia/indexAvanzada.action",
+        },
+    },
+    {
+        img: course11,
+        title: "Cedula Profesional",
+        description: "Cedula Profesional por la carrera de Ingeniería en Sistemas Computacionales.",      
+        links: {
+            site: course11, // Cambiado a la importación directa de la imagen
+            udemy: "https://www.cedulaprofesional.sep.gob.mx/cedula/presidencia/indexAvanzada.action",
+        },
+    },
     {
         img: course1,
         title: "React: De cero a experto ( Hooks y MERN)",
