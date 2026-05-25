@@ -10,6 +10,7 @@ import course8 from "../assets/Course/course8.jpg";
 import course9 from "../assets/Course/course9.jpg";
 import course10 from "../assets/Course/course10.png";
 import course11 from "../assets/Course/course11.png";
+import course12 from "../assets/Course/course12.png";
 import Reveal from './Reveal';
 import { SiUdemy } from 'react-icons/si';
 
@@ -111,6 +112,15 @@ const cursos = [
         links: {
             site: course9, // Cambiado a la importación directa de la imagen
             udemy: "https://www.udemy.com/course/amazon-elastic-compute-cloud-ec2-beginners/",
+        },
+    },
+    {
+        img: course12,
+        title: "Python Essentials 1",
+        description: "Cisco, in collaboration with OpenEDG Python Institute, verifies the earner of this badge successfully completed the Python Essentials 1 course and achieved the student level credentials. Earners have knowledge of the concepts of computer programming, the syntax and semantics of the Python language as well as demonstrate the ability to accomplish coding tasks related to the essentials of programming in the Python language and resolve implementation challenges using the Python Standard Library.",
+        links: {
+            site: course12, // Cambiado a la importación directa de la imagen
+            udemy: "https://www.credly.com/badges/9ed606d4-d327-4a50-b06b-7793a6c99d28/public_url",
         },
     },
 ]
