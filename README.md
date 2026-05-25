@@ -1,52 +1,51 @@
-# 🌐 Portafolio Personal en React
+🌟 Portafolio Personal | Edwin Bonilla
+¡Hola! Bienvenido a mi portafolio profesional, desarrollado con React y diseñado para ofrecer una experiencia interactiva, moderna y totalmente responsive. Aquí encontrarás un resumen de mis habilidades, proyectos destacados y trayectoria profesional.
 
-¡Bienvenido a mi portafolio personal!  
-Este proyecto está desarrollado con **React** y diseñado para mostrar mis habilidades, proyectos y experiencia profesional de manera interactiva y atractiva.
+✨ Características principales
+📱 Diseño completamente responsivo – Adaptado a móviles, tablets y escritorio.
 
----
+🧩 Secciones bien estructuradas – Sobre mí, habilidades técnicas, proyectos, experiencia laboral y contacto.
 
-## 📌 Características
+🎞️ Animaciones fluidas – Implementadas con Framer Motion para mejorar la experiencia de usuario.
 
-✅ **Diseño Responsivo** – Compatible con móviles, tablets y desktop.  
-✅ **Secciones Organizadas** – Sobre mí, habilidades, proyectos, experiencia y contacto.  
-✅ **Animaciones Modernas** – Efectos suaves para una mejor experiencia de usuario.  
-✅ **Optimizado para SEO** – Mejor visibilidad en motores de búsqueda.
+🔍 Optimizado para SEO – Mayor visibilidad en buscadores.
 
----
+⚡ Rendimiento rápido – Gracias a Vite como entorno de desarrollo.
 
-## 🚀 Tecnologías Utilizadas
+🛠️ Tecnologías utilizadas
+Tecnología	Propósito
+React	Interfaz de usuario
+Vite	Desarrollo rápido y optimizado
+Tailwind CSS	Estilizado ágil y responsive
+Framer Motion	Animaciones modernas
+📦 Instalación y uso
+Sigue estos pasos para ejecutar el proyecto en tu máquina local:
 
-- **React** – Biblioteca principal para la construcción de la interfaz.
-- **Vite** – Entorno de desarrollo rápido y optimizado.
-- **Tailwind CSS** / **Styled Components** – Estilizado modular y responsive.
-- **Framer Motion** – Para animaciones fluidas.
-
----
-
-## 📦 Instalación
-
-Clona el repositorio:
-
-```bash
+bash
+# 1. Clonar el repositorio
 git clone https://github.com/tu-usuario/tu-portafolio.git
 
-```bash
-npm install
-# o
-yarn install
+# 2. Acceder al directorio
+cd tu-portafolio
 
-```bash
-npm run dev
-# o
-yarn dev
+# 3. Instalar dependencias
+npm install   # o yarn install
 
+# 4. Iniciar el servidor de desarrollo
+npm run dev   # o yarn dev
+El proyecto estará disponible en http://localhost:5173 (por defecto en Vite).
 
 📄 Licencia
-Este proyecto está bajo la licencia MIT.
+Este proyecto se distribuye bajo la licencia MIT.
+Consulta el archivo LICENSE para más detalles.
 
-✨ ¡Gracias por visitar mi portafolio! ✨
+💬 Contacto y redes
+¿Te gustó el proyecto o quieres colaborar? ¡Conectemos!
 
-Si te gustó el proyecto, no dudes en dejar una ⭐ en el repo o conectarte conmigo.
+📧 Correo: edwindolorez19@outlook.com
 
-📧 Contacto: edwindolorez19@outlook.com
-🔗 LinkedIn: https://www.linkedin.com/in/edwin-bonilla-dolores-082081196/
+🔗 LinkedIn: Edwin Bonilla Dolores
+
+⭐ ¡Gracias por tu visita!
+Si este portafolio te parece útil o inspirador, no dudes en dejar una estrella en el repositorio.
+¡Toda retroalimentación es bienvenida!
