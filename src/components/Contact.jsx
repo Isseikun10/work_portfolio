@@ -35,7 +35,7 @@ const Contact = () => {
                             </div>
 
                             <div className="bg-gray-800/40 p-5 rounded-lg">
-                                <h3 className="md:text-4xl text-2xl font-semibold text-white">4
+                                <h3 className="md:text-4xl text-2xl font-semibold text-white">5
                                     <span>+</span>
                                 </h3>
                                 <p className="text-xs md:text-base"><span>años de experiencia</span></p>

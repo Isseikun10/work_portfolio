@@ -36,7 +36,7 @@ const Hero = () => {
                     </motion.p>
 
                     <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 1 }} className="text-gray-300 max-w-[300px] md:max-w-[500px] md:text-2xl text-lg mb-6">
-                        Soy un apasionado desarrollador fullstack con más de 4 años de experiencia.
+                        Soy un apasionado desarrollador fullstack con más de 5 años de experiencia.
                     </motion.p>
 
                     <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, delay: 1.5 }} className="flex flex-row items-center gap-6 my-4 md:mb-0">

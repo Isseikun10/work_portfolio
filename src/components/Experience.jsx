@@ -5,7 +5,7 @@ import Reveal from './Reveal'
 const experiences = [
     {
         company: 'Connectivity Solutions',
-        period: '2021 - Actual',
+        period: '2021 - 2026',
         description: 'Con más de 10 años de experiencia y una amplia cartera de proyectos exitosos, somos su mejor opción para mantener la seguridad, continuidad e incluso visibilidad de sus conexiones a internet. Nuestro servicio de monitoreo de enlaces de red, levantamiento y seguridad está diseñado para satisfacer las necesidades de cualquier organización que dependa de redes de internet. Como expertos en el campo, ofrecemos soluciones de clase mundial, personalizadas y adaptadas a las necesidades individuales de cada cliente.',
       },
       {
