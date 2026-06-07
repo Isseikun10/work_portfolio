@@ -127,7 +127,7 @@ const cursos = [
     {
         img: course13,
         title: "Python Essentials 2",
-        description: "Cisco, in collaboration with OpenEDG Python Institute, verifies the earner of this badge successfully completed the Python Essentials 1 course and achieved the student level credentials. Earners have knowledge of the concepts of computer programming, the syntax and semantics of the Python language as well as demonstrate the ability to accomplish coding tasks related to the essentials of programming in the Python language and resolve implementation challenges using the Python Standard Library.",
+        description: "Cisco, in collaboration with OpenEDG Python Institute, verifies the earner of this badge successfully completed the Python Essentials 2 course and achieved the student level credentials. Earners have knowledge and skills in intermediate aspects of Python programming, including modules, packages, exceptions, file processing, as well as general coding techniques and object-oriented programming (OOP), and prepares the learner for the PCAP – Certified Associate in Python Programming certification.",
         links: {
             site: course13, // Cambiado a la importación directa de la imagen
             udemy: "https://www.credly.com/badges/3d1330c4-05d9-4e9e-b209-a9ea829afa71/public_url",
