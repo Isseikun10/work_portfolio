@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaGithubSquare, FaInstagram, FaLinkedin } from 'react-icons/fa'
+import { FaGithubSquare, FaInstagram, FaLinkedin, FaGitlab } from 'react-icons/fa'
 
 const Footer = () => {
     return (
@@ -8,7 +8,7 @@ const Footer = () => {
                 <h3 className='text-2xl text-gray-200 font-semibold'>Edwin Bonilla</h3>
                 <div className='flex flex-row justify-center md:justify-start gap-6 text-gray-400 text-4xl'>
                     <a href="https://gitlab.com/EdwinCS1" target="_blank" rel="noopener noreferrer" className='hover:text-red-500 transition-colors duration-300'>
-                        <FaGithubSquare />
+                        <FaGitlab />
                     </a>
                     <a href="https://github.com/Isseikun10" target="_blank" rel="noopener noreferrer" className='hover:text-red-500 transition-colors duration-300'>
                         <FaGithubSquare />
