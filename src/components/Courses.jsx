@@ -21,7 +21,7 @@ const cursos = [
         title: "Título Profesional",
         description: "Titulo Profesional por la carrera de Ingeniería en Sistemas Computacionales.",      
         links: {
-            site: course10, // Cambiado a la importación directa de la imagen
+            site: course10,
             udemy: "https://www.cedulaprofesional.sep.gob.mx/cedula/presidencia/indexAvanzada.action",
         },
     },
@@ -30,7 +30,7 @@ const cursos = [
         title: "Cedula Profesional",
         description: "Cedula Profesional por la carrera de Ingeniería en Sistemas Computacionales.",      
         links: {
-            site: course11, // Cambiado a la importación directa de la imagen
+            site: course11,
             udemy: "https://www.cedulaprofesional.sep.gob.mx/cedula/presidencia/indexAvanzada.action",
         },
     },
@@ -39,7 +39,7 @@ const cursos = [
         title: "React: De cero a experto ( Hooks y MERN)",
         description: "Context API, MERN, Hooks, Firestore, JWT, Testing, Autenticaciones, Despliegues, CRUD, Logs, MUI, Multiple Routers.",
         links: {
-            site: course1, // Cambiado a la importación directa de la imagen
+            site: course1,
             udemy: "https://www.udemy.com/course/react-cero-experto/",
         },
     },
@@ -48,7 +48,7 @@ const cursos = [
         title: "Elements of AI",
         description: "Introduction to AI, Machine Learning, Neural Networks, and more.",
         links: {
-            site: course2, // Cambiado a la importación directa de la imagen
+            site: course2,
             udemy: "https://course.elementsofai.com/es/",
         },
     },
@@ -57,7 +57,7 @@ const cursos = [
         title: "CCNA R&S: Introduction to Networks",
         description: "The course introduces the principles and structure of IP addressing and the fundamentals of Ethernet concepts, media, and operations to provide a foundation for the curriculum.",
         links: {
-            site: course3, // Cambiado a la importación directa de la imagen
+            site: course3,
             udemy: "https://www.netacad.com/",
         },
     },
@@ -66,7 +66,7 @@ const cursos = [
         title: "CSS & JavaScript - Certification Course for Beginners",
         description: "Learn how to Add Dynamic Client-Side Functions to your Web Pages using CSS & JavaScript.",
         links: {
-            site: course4, // Cambiado a la importación directa de la imagen
+            site: course4,
             udemy: "https://www.udemy.com/course/css-javascript-certification-course-for-beginners/",
         },
     },
@@ -75,7 +75,7 @@ const cursos = [
         title: "React Responsive Portfolio Website - Complete React Project",
         description: "Build React Portfolio Website, React Context API, Send E-mail from React App, React Hooks, React Packages, React theme.",
         links: {
-            site: course5, // Cambiado a la importación directa de la imagen
+            site: course5,
             udemy: "https://www.udemy.com/course/react-responsive-portfolio-website-complete-react-project/",
         },
     },
@@ -84,7 +84,7 @@ const cursos = [
         title: "Maestría en JavaScript: Desde Principiante Hasta Experto",
         description: "Aprende el Lenguaje de Programación Web más usado paso a paso",
         links: {
-            site: course6, // Cambiado a la importación directa de la imagen
+            site: course6,
             udemy: "https://www.udemy.com/course/react-responsive-portfolio-website-complete-react-project/",
         },
     },
@@ -93,7 +93,7 @@ const cursos = [
         title: "Git and GitHub Bootcamp for Beginners",
         description: "Learn the basis essentials of Git and GitHub & get a head start with the most popular Version Control System.",
         links: {
-            site: course7, // Cambiado a la importación directa de la imagen
+            site: course7,
             udemy: "https://www.udemy.com/course/draft/4161352/",
         },
     },
@@ -102,7 +102,7 @@ const cursos = [
         title: "TailwindCSS from A to Z: Master TailwindCSS Quickly",
         description: "Get started with Tailwind, a utility-first CSS framework, and master its directives, modules, and code reusability.",
         links: {
-            site: course8, // Cambiado a la importación directa de la imagen
+            site: course8,
             udemy: "https://www.udemy.com/course/learn-tailwind-css-quickly/",
         },
     },
@@ -111,7 +111,7 @@ const cursos = [
         title: "Amazon Elastic Compute Cloud (EC2) Beginners Certification",
         description: "Learn to Setup, Configure, and Administer EC2 Instances on AWS. Explore Virtualization, Scaling, Elastic IPs, + More.",
         links: {
-            site: course9, // Cambiado a la importación directa de la imagen
+            site: course9,
             udemy: "https://www.udemy.com/course/amazon-elastic-compute-cloud-ec2-beginners/",
         },
     },
@@ -120,7 +120,7 @@ const cursos = [
         title: "Python Essentials 1",
         description: "Cisco, in collaboration with OpenEDG Python Institute, verifies the earner of this badge successfully completed the Python Essentials 1 course and achieved the student level credentials. Earners have knowledge of the concepts of computer programming, the syntax and semantics of the Python language as well as demonstrate the ability to accomplish coding tasks related to the essentials of programming in the Python language and resolve implementation challenges using the Python Standard Library.",
         links: {
-            site: course12, // Cambiado a la importación directa de la imagen
+            site: course12,
             udemy: "https://www.credly.com/badges/9ed606d4-d327-4a50-b06b-7793a6c99d28/public_url",
         },
     },
@@ -129,7 +129,7 @@ const cursos = [
         title: "Python Essentials 2",
         description: "Cisco, in collaboration with OpenEDG Python Institute, verifies the earner of this badge successfully completed the Python Essentials 2 course and achieved the student level credentials. Earners have knowledge and skills in intermediate aspects of Python programming, including modules, packages, exceptions, file processing, as well as general coding techniques and object-oriented programming (OOP), and prepares the learner for the PCAP – Certified Associate in Python Programming certification.",
         links: {
-            site: course13, // Cambiado a la importación directa de la imagen
+            site: course13,
             udemy: "https://www.credly.com/badges/3d1330c4-05d9-4e9e-b209-a9ea829afa71/public_url",
         },
     },
@@ -158,10 +158,10 @@ const Courses = () => {
             { isModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" onClick={ closeModal } >
                     <div className="relative max-w-4xl max-h-full">
-                        <button className="absolute -top-10 right-0 text-white text-2xl hover:text-gray-300" onClick={ closeModal } >
+                        <button className="absolute -top-10 right-0 text-white text-2xl hover:text-red-500 transition-colors" onClick={ closeModal } >
                             &times;
                         </button>
-                        <img src={ selectedImage } alt="Certificado" className="max-w-full max-h-[90vh] object-contain" onClick={ (e) => e.stopPropagation() } />
+                        <img src={ selectedImage } alt="Certificado" className="max-w-full max-h-[90vh] object-contain border-2 border-red-600/40 rounded-lg" onClick={ (e) => e.stopPropagation() } />
                     </div>
                 </div>
             ) }
@@ -170,18 +170,18 @@ const Courses = () => {
                 <Reveal key={ index} >
                     <div className={`flex flex-col md:flex-row ${ index % 2 !== 0 ? 'md:flex-row-reverse' : '' } mb-12`}>
                         <div className='w-full md:w-1/2 p-4'>
-                            <img src={ course.img } alt={ course.title } className='w-full h-full object-cover rounded-lg shadow-lg'/>
+                            <img src={ course.img } alt={ course.title } className='w-full h-full object-cover rounded-lg shadow-lg border border-red-600/20 hover:border-red-600/60 transition-colors duration-300'/>
                         </div>
                         
                         <div className='w-full md:w-1/2 p-4 flex flex-col justify-center'>
                             <h3 className='text-2xl font-semibold text-gray-200 mb-4'> { course.title } </h3>
                             <p className='text-gray-300 mb-4'> { course.description } </p>
                             <div className='flex space-x-4'>
-                                <button onClick={ () => openModal(course.links.site) } className='px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300' >
+                                <button onClick={ () => openModal(course.links.site) } className='px-4 py-2 bg-red-600 text-gray-100 rounded-lg hover:bg-red-700 transition duration-300 font-medium' >
                                     Ver Certificado
                                 </button>
 
-                                <a href={ course.links.udemy } target="_blank" rel="noopener noreferrer" className='px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300 flex items-center justify-center' >
+                                <a href={ course.links.udemy } target="_blank" rel="noopener noreferrer" className='px-4 py-2 bg-red-600/80 text-gray-100 rounded-lg hover:bg-red-700 transition duration-300 flex items-center justify-center' >
                                     <SiUdemy size={ 20 }/>
                                 </a>
                             </div>
