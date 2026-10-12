@@ -27,12 +27,12 @@ const Hero = () => {
                         ]}
                         speed={50}
                         repeat={Infinity}
-                        className="font-bold text-gray-400 text-xl md:text-5xl italic- mb-4"
+                        className="font-bold text-gray-400 text-xl md:text-5xl italic mb-4"
                     />
 
                     <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.5 }} className="text-gray-200 md:text-7xl text-5xl tracking-tight mb-4">
                         HOLA, SOY <br/>
-                        <span className="text-purple-500"> EDWIN BONILLA DOLORES </span>
+                        <span className="text-red-500"> EDWIN BONILLA DOLORES </span>
                     </motion.p>
 
                     <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 1 }} className="text-gray-300 max-w-[300px] md:max-w-[500px] md:text-2xl text-lg mb-6">
@@ -41,28 +41,28 @@ const Hero = () => {
 
                     <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, delay: 1.5 }} className="flex flex-row items-center gap-6 my-4 md:mb-0">
                         
-                        <motion.button whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.3)" }} className="z-10 cursor-pointer font-bold text-gray-200 md:w-auto p-4 border border-purple-400 rounded-xl"                      >
+                        <motion.button whileHover={{ scale: 1.05, boxShadow: "0px 0px 12px rgba(220, 38, 38, 0.4)" }} className="z-10 cursor-pointer font-bold text-gray-200 md:w-auto p-4 border border-red-500 rounded-xl hover:bg-red-600/10 transition-colors"                      >
                             <a href={CV} download="CV.pdf">Descargar CV</a>
                         </motion.button>
 
-                        <div className="flex gap-6 flex-row text-4xl md:text-6xl text-purple-400 z-20">
-                            <motion.a whileHover={{ scale: 1.2 }} href="https://github.com/Isseikun10" target="_blank">
+                        <div className="flex gap-6 flex-row text-4xl md:text-6xl text-red-500 z-20">
+                            <motion.a whileHover={{ scale: 1.2 }} href="https://github.com/Isseikun10" target="_blank" rel="noopener noreferrer">
                                 <AiOutlineGithub/>
                             </motion.a>
 
-                            <motion.a whileHover={{ scale: 1.2 }} href="https://gitlab.com/EdwinCS1" target="_blank">
+                            <motion.a whileHover={{ scale: 1.2 }} href="https://gitlab.com/EdwinCS1" target="_blank" rel="noopener noreferrer">
                                 <AiOutlineGitlab/>
                             </motion.a>
 
-                            <motion.a whileHover={{ scale: 1.2 }} href="https://www.linkedin.com/in/edwin-bonilla-dolores-082081196/" target="_blank">
+                            <motion.a whileHover={{ scale: 1.2 }} href="https://www.linkedin.com/in/edwin-bonilla-dolores-082081196/" target="_blank" rel="noopener noreferrer">
                                 <AiOutlineLinkedin/>
                             </motion.a>
 
-                            <motion.a whileHover={{ scale: 1.2 }} href="https://medium.com/@isseikun" target="_blank">
+                            <motion.a whileHover={{ scale: 1.2 }} href="https://medium.com/@isseikun" target="_blank" rel="noopener noreferrer">
                                 <AiOutlineMedium/>
                             </motion.a>
 
-                            <motion.a whileHover={{ scale: 1.2 }} href="https://www.instagram.com/edwindolorez/" target="_blank">
+                            <motion.a whileHover={{ scale: 1.2 }} href="https://www.instagram.com/edwindolorez/" target="_blank" rel="noopener noreferrer">
                                 <AiOutlineInstagram/>
                             </motion.a>
                         </div>
@@ -83,7 +83,7 @@ const Hero = () => {
                 <DiNodejsSmall className="text-green-600 mx-2" />
                 <DiPython className="text-blue-400 mx-2" />
                 <DiLaravel className="text-red-600 mx-2" />     
-                <DiPhp className="text-purple-600 mx-2" />
+                <DiPhp className="text-red-600 mx-2" />
             </motion.div>
 
             <div className="absolute inset-0 hidden md:block">
