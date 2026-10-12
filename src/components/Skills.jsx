@@ -22,7 +22,7 @@ import {
   DiLinux,
   DiNginx,
 } from "react-icons/di"
-import { SiNextdotjs, SiTailwindcss, SiExpress, SiCsharp, SiDotnet, SiGraphql, SiJira, SiSwagger, SiTypescript } from "react-icons/si"
+import { SiNextdotjs, SiTailwindcss, SiExpress, SiDotnet, SiGraphql, SiJira, SiSwagger, SiTypescript } from "react-icons/si"
 import { FaAws, FaDocker } from "react-icons/fa"
 import Reveal from "./Reveal"
 
@@ -48,7 +48,7 @@ const skills = [
     technologies: [
       { name: 'Node.js', icon: <DiNodejsSmall className='text-green-500' /> },
       { name: 'Express.js', icon: <SiExpress className='text-gray-300' /> },
-      { name: 'C# / .NET', icon: <SiCsharp className='text-purple-500' /> },
+      { name: 'C# / .NET', icon: <span className='text-purple-500'>C#</span> },
       { name: 'Python', icon: <DiPython className='text-blue-400' /> },
       { name: 'PHP', icon: <DiPhp className='text-indigo-500' /> },
       { name: 'Laravel', icon: <DiLaravel className='text-red-500' /> },
