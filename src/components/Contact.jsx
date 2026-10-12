@@ -1,5 +1,4 @@
 import React from "react"
-import { AiFillLinkedin, AiFillGithub } from "react-icons/ai"
 import { motion } from "framer-motion"
 import Reveal from "./Reveal"
 
@@ -56,9 +55,9 @@ const Contact = () => {
                         <p className="text-gray-100 font-bold text-xl mb-2">
                             Vamos, contactame!
                         </p>
-                        <input type="text" id="name" placeholder="Nombre ..." name="name" className="mb-2 w-full rounded-md border border-purple-600 py-2 pl-2 pr-4 text-gray-200"/>
-                        <input type="email" id="email" placeholder="Correo ..." name="email" className="mb-2 w-full rounded-md border border-purple-600 py-2 pl-2 pr-4 text-gray-200"/>
-                        <textarea name="textarea" id="textarea" cols="30" rows="4" placeholder="Mensaje ..."className="mb-2 w-full rounded-md border border-purple-600 py-2 pl-2 pr-4 text-gray-200"/>
+                        <input type="text" id="name" placeholder="Nombre ..." name="name" className="mb-2 w-full rounded-md border border-red-600 py-2 pl-2 pr-4 text-gray-200"/>
+                        <input type="email" id="email" placeholder="Correo ..." name="email" className="mb-2 w-full rounded-md border border-red-600 py-2 pl-2 pr-4 text-gray-200"/>
+                        <textarea name="textarea" id="textarea" cols="30" rows="4" placeholder="Mensaje ..."className="mb-2 w-full rounded-md border border-red-600 py-2 pl-2 pr-4 text-gray-200"/>
                         <button type="submit" className="w-full py-3 rounded-md text-gray-100 font-semibold text-xl bg-primary-color">
                             Enviar Mensaje
                         </button>
