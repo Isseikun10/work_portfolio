@@ -62,7 +62,7 @@ const Navbar = () => {
                         <span className="font-mono text-cyan-400 transition-transform duration-300 group-hover:-translate-x-0.5">
                             &lt;
                         </span>
-                        <span className="text-base md:text-lg">Edwin Bonilla</span>
+                        <span className="text-base md:text-lg">Edwin Bonilla Dolores</span>
                         <span className="font-mono text-violet-400 transition-transform duration-300 group-hover:translate-x-0.5">
                             /&gt;
                         </span>

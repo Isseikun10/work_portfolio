@@ -88,6 +88,8 @@ const Hero = () => {
                                 1200,
                                 "Desarrollador de Chatbots",
                                 1200,
+                                "Soporte Técnico",
+                                1200,
                             ]}
                             speed={50}
                             repeat={Infinity}
