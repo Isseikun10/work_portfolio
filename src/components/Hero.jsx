@@ -1,95 +1,177 @@
-import React from "react";
-import profilepic from "../assets/profpic.png";
-import { TypeAnimation } from "react-type-animation";
-import ShinyEffect from "./ShinyEffect";
-import { AiOutlineGithub, AiOutlineGitlab, AiOutlineInstagram, AiOutlineLink, AiOutlineLinkedin, AiOutlineMedium } from "react-icons/ai";
-import { DiCss3, DiHtml5, DiJavascript1, DiLaravel, DiMysql, DiNodejsSmall, DiPhp, DiPython, DiReact } from "react-icons/di";
-import { motion } from "framer-motion";
-import CV from "../assets/Curriculum/CV.pdf";
+import React from "react"
+import { motion } from "framer-motion"
+import { TypeAnimation } from "react-type-animation"
+import {
+    AiOutlineGithub,
+    AiOutlineGitlab,
+    AiOutlineInstagram,
+    AiOutlineLinkedin,
+    AiOutlineMedium,
+} from "react-icons/ai"
+import {
+    DiCss3,
+    DiHtml5,
+    DiJavascript1,
+    DiLaravel,
+    DiMysql,
+    DiNodejsSmall,
+    DiPhp,
+    DiPython,
+    DiReact,
+} from "react-icons/di"
+import { FiDownload } from "react-icons/fi"
+import profilepic from "../assets/profpic.png"
+import ShinyEffect from "./ShinyEffect"
+import CV from "../assets/Curriculum/CV.pdf"
 
+const SOCIALS = [
+    { label: "GitHub", href: "https://github.com/Isseikun10", Icon: AiOutlineGithub },
+    { label: "GitLab", href: "https://gitlab.com/EdwinCS1", Icon: AiOutlineGitlab },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/edwin-bonilla-dolores-082081196/", Icon: AiOutlineLinkedin },
+    { label: "Medium", href: "https://medium.com/@isseikun", Icon: AiOutlineMedium },
+    { label: "Instagram", href: "https://www.instagram.com/edwindolorez/", Icon: AiOutlineInstagram },
+]
+
+const STACK = [
+    { name: "HTML5", Icon: DiHtml5, color: "text-orange-500" },
+    { name: "CSS3", Icon: DiCss3, color: "text-blue-500" },
+    { name: "JavaScript", Icon: DiJavascript1, color: "text-yellow-400" },
+    { name: "React", Icon: DiReact, color: "text-cyan-400" },
+    { name: "Node.js", Icon: DiNodejsSmall, color: "text-green-500" },
+    { name: "PHP", Icon: DiPhp, color: "text-indigo-400" },
+    { name: "Laravel", Icon: DiLaravel, color: "text-red-500" },
+    { name: "Python", Icon: DiPython, color: "text-sky-400" },
+    { name: "MySQL", Icon: DiMysql, color: "text-blue-400" },
+]
+
+const fadeUp = (delay = 0) => ({
+    initial: { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.8, delay },
+})
 
 const Hero = () => {
-  
     return (
-        <div className="mt-24 max-w-[1200px] mx-auto relative">
-            <div className="grid md:grid-cols-2 place-items-center gap-8">
-                <motion.div initial={{ opacity: 0, y: -50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1 }}>
-                    <TypeAnimation
-                        sequence={[
-                            "Ing. En Sistemas Computacionales",
-                            1000,
-                            "Especializado en Desarrollo Full Stack",
-                            1000,
-                            "Gestión de Infraestructura",
-                            1000,
-                            "Desarrollador de Chatbots",
-                            1000
-                        ]}
-                        speed={50}
-                        repeat={Infinity}
-                        className="font-bold text-gray-400 text-xl md:text-5xl italic mb-4"
-                    />
-
-                    <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.5 }} className="text-gray-200 md:text-7xl text-5xl tracking-tight mb-4">
-                        HOLA, SOY <br/>
-                        <span className="text-red-500"> EDWIN BONILLA DOLORES </span>
+        <section className="relative mx-auto mt-24 max-w-[1200px] px-6" id="home">
+            <div className="grid place-items-center gap-12 md:grid-cols-2">
+                {/* ───────── Texto ───────── */}
+                <div className="relative z-10 w-full">
+                    <motion.p
+                        {...fadeUp(0)}
+                        className="mb-5 inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/5 px-3 py-1.5 font-mono text-xs text-cyan-300 backdrop-blur md:text-sm"
+                    >
+                        <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-400" />
+                        &lt;developer /&gt;
                     </motion.p>
 
-                    <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 1 }} className="text-gray-300 max-w-[300px] md:max-w-[500px] md:text-2xl text-lg mb-6">
+                    <motion.h1 {...fadeUp(0.15)} className="mb-5 font-extrabold leading-[1.05] tracking-tight text-white">
+                        <span className="block text-4xl text-gray-300 md:text-5xl">Hola, soy</span>
+                        <span className="mt-1 block bg-gradient-to-r from-cyan-400 via-sky-400 to-violet-500 bg-clip-text text-4xl text-transparent md:text-6xl">
+                            Edwin Bonilla Dolores
+                        </span>
+                    </motion.h1>
+
+                    {/* Línea de terminal con typing */}
+                    <motion.div
+                        {...fadeUp(0.3)}
+                        className="mb-6 min-h-[2.5rem] font-mono text-base text-gray-300 md:text-xl"
+                    >
+                        <span className="mr-2 text-cyan-400">&gt;</span>
+                        <TypeAnimation
+                            sequence={[
+                                "Ing. en Sistemas Computacionales",
+                                1200,
+                                "Especializado en Desarrollo Full Stack",
+                                1200,
+                                "Gestión de Infraestructura",
+                                1200,
+                                "Desarrollador de Chatbots",
+                                1200,
+                            ]}
+                            speed={50}
+                            repeat={Infinity}
+                            cursor
+                        />
+                    </motion.div>
+
+                    <motion.p {...fadeUp(0.45)} className="mb-8 max-w-[520px] text-base leading-7 text-gray-400 md:text-lg">
                         Soy un apasionado desarrollador fullstack con más de 5 años de experiencia.
                     </motion.p>
 
-                    <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1, delay: 1.5 }} className="flex flex-row items-center gap-6 my-4 md:mb-0">
-                        
-                        <motion.button whileHover={{ scale: 1.05, boxShadow: "0px 0px 12px rgba(220, 38, 38, 0.4)" }} className="z-10 cursor-pointer font-bold text-gray-200 md:w-auto p-4 border border-red-500 rounded-xl hover:bg-red-600/10 transition-colors"                      >
-                            <a href={CV} download="CV.pdf">Descargar CV</a>
-                        </motion.button>
+                    {/* Acciones */}
+                    <motion.div {...fadeUp(0.6)} className="flex flex-wrap items-center gap-5">
+                        <a
+                            href={CV}
+                            download="CV.pdf"
+                            className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-violet-600 px-6 py-3 font-mono text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-cyan-500/30 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40 active:scale-[0.98]"
+                        >
+                            <FiDownload className="transition-transform duration-300 group-hover:translate-y-0.5" />
+                            Descargar CV
+                        </a>
 
-                        <div className="flex gap-6 flex-row text-4xl md:text-6xl text-red-500 z-20">
-                            <motion.a whileHover={{ scale: 1.2 }} href="https://github.com/Isseikun10" target="_blank" rel="noopener noreferrer">
-                                <AiOutlineGithub/>
-                            </motion.a>
-
-                            <motion.a whileHover={{ scale: 1.2 }} href="https://gitlab.com/EdwinCS1" target="_blank" rel="noopener noreferrer">
-                                <AiOutlineGitlab/>
-                            </motion.a>
-
-                            <motion.a whileHover={{ scale: 1.2 }} href="https://www.linkedin.com/in/edwin-bonilla-dolores-082081196/" target="_blank" rel="noopener noreferrer">
-                                <AiOutlineLinkedin/>
-                            </motion.a>
-
-                            <motion.a whileHover={{ scale: 1.2 }} href="https://medium.com/@isseikun" target="_blank" rel="noopener noreferrer">
-                                <AiOutlineMedium/>
-                            </motion.a>
-
-                            <motion.a whileHover={{ scale: 1.2 }} href="https://www.instagram.com/edwindolorez/" target="_blank" rel="noopener noreferrer">
-                                <AiOutlineInstagram/>
-                            </motion.a>
-                        </div>
+                        <ul className="flex gap-2" aria-label="Redes sociales">
+                            {SOCIALS.map(({ label, href, Icon }) => (
+                                <li key={label}>
+                                    <a
+                                        href={href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={label}
+                                        title={label}
+                                        className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-2xl text-gray-400 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/50 hover:bg-cyan-400/10 hover:text-cyan-300 hover:shadow-lg hover:shadow-cyan-500/20 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40"
+                                    >
+                                        <Icon />
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
                     </motion.div>
+                </div>
+
+                {/* ───────── Foto ───────── */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1 }}
+                    className="relative z-10"
+                >
+                    <div
+                        aria-hidden="true"
+                        className="absolute inset-0 -z-10 scale-90 rounded-full bg-gradient-to-tr from-cyan-500/30 to-violet-600/30 blur-3xl"
+                    />
+                    <img
+                        src={profilepic}
+                        alt="Edwin Bonilla Dolores"
+                        className="w-[280px] drop-shadow-2xl md:w-[440px]"
+                    />
                 </motion.div>
-
-
-                <motion.img  src={profilepic} className="w-[300px] md:w-[450px]" initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} />
             </div>
 
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 2 }} className="flex flex-row text-7xl px-12 md:px-0 w-full justify-center items-center py-24">
-                <p className="text-gray-200 mr-6">My Stack Tech</p>
-                <DiHtml5 className="text-orange-600 mx-2" />
-                <DiCss3 className="text-blue-600 mx-2" />
-                <DiMysql className="text-blue-400 mx-2" />
-                <DiJavascript1 className="text-yellow-500 mx-2" />
-                <DiReact className="text-cyan-500 mx-2" />
-                <DiNodejsSmall className="text-green-600 mx-2" />
-                <DiPython className="text-blue-400 mx-2" />
-                <DiLaravel className="text-red-600 mx-2" />     
-                <DiPhp className="text-red-600 mx-2" />
+            {/* ───────── Stack ───────── */}
+            <motion.div {...fadeUp(0.2)} className="relative z-10 py-20 md:py-24">
+                <p className="mb-8 text-center font-mono text-sm text-cyan-400">
+                    <span className="text-violet-400">const</span> stack <span className="text-gray-500">=</span> [ ]
+                </p>
+
+                <ul className="mx-auto flex max-w-[900px] flex-wrap justify-center gap-3">
+                    {STACK.map(({ name, Icon, color }) => (
+                        <li
+                            key={name}
+                            className="group flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-lg hover:shadow-cyan-500/10"
+                        >
+                            <Icon className={`text-3xl transition-transform duration-300 group-hover:scale-110 md:text-4xl ${color}`} />
+                            <span className="font-mono text-xs text-gray-300 md:text-sm">{name}</span>
+                        </li>
+                    ))}
+                </ul>
             </motion.div>
 
-            <div className="absolute inset-0 hidden md:block">
+            <div className="pointer-events-none absolute inset-0 hidden md:block">
                 <ShinyEffect left={0} top={0} size={1400} />
             </div>
-        </div>
+        </section>
     )
 }
 
