@@ -22,7 +22,7 @@ const Footer = () => {
                 <div className="space-y-5 text-center md:text-left">
                     <div>
                         <p className="mb-1 font-mono text-sm text-cyan-400">&lt;/&gt;</p>
-                        <h3 className="text-2xl font-semibold text-gray-100">Edwin Bonilla</h3>
+                        <h3 className="text-2xl font-semibold text-gray-100">Edwin Bonilla Dolores</h3>
                     </div>
 
                     <ul className="flex justify-center gap-3 md:justify-start" aria-label="Redes sociales">
