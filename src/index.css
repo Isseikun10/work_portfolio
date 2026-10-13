@@ -1,35 +1,95 @@
-/* @import '@fortawesome/fontawesome-free/css/all.css';
-@import 'flatpickr/dist/themes/material_blue.css'; */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Montserrat:wght@300;400;600;700;800&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-body {
-    font-family: "Montserrat", sans-serif;
-    background-color: #1f0b0b;
+/* ───────── Design tokens ───────── */
+@theme {
+    --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --color-ink: #070b14;
+    --color-primary: #06b6d4;   /* cyan-500 */
+    --color-secondary: #7c3aed; /* violet-600 */
 }
 
-h2 {
-    @apply text-xl md:text-4xl
+/* ───────── Base ─────────
+   IMPORTANTE: los estilos globales van dentro de @layer base.
+   Fuera de una capa le ganan a las utilidades de Tailwind y
+   romperían clases como text-sm, text-transparent o text-cyan-400. */
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        color-scheme: dark;
+    }
+
+    body {
+        @apply font-sans text-gray-300 antialiased;
+        background-color: var(--color-ink);
+        background-image:
+            radial-gradient(60rem 40rem at 10% -10%, rgba(6, 182, 212, 0.10), transparent 60%),
+            radial-gradient(50rem 40rem at 100% 20%, rgba(124, 58, 237, 0.10), transparent 60%),
+            radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: auto, auto, 28px 28px;
+        background-attachment: fixed;
+    }
+
+    h2 {
+        @apply text-xl md:text-4xl;
+    }
+
+    p {
+        @apply tracking-tight leading-relaxed;
+    }
+
+    ::selection {
+        background: rgba(6, 182, 212, 0.35);
+        color: #fff;
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+    }
+
+    /* Scrollbar */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #334155 transparent;
+    }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
 }
 
-p {
-    @apply text-xl tracking-tight leading-relaxed
+/* ───────── Utilidades propias ───────── */
+@utility text-gradient {
+    background-image: linear-gradient(to right, var(--color-primary), #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-span {
-    @apply text-red-600
+/* Reemplaza el antiguo bg-red-600; se mantiene el nombre para no romper componentes existentes */
+@utility bg-primary-color {
+    background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
 }
-  
+
+/* Efecto de brillo que sigue al cursor (si lo usas) */
 .shiny-effect {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
     z-index: 1;
-    background: radial-gradient(circle, rgba(202, 19, 19, 0.2), transparent 70%);
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.18), transparent 70%);
 }
-  
-.bg-primary-color {
-    @apply bg-red-600
+
+/* Respeta a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
