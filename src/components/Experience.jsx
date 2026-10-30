@@ -1,41 +1,54 @@
-import React, { useState } from "react"
+import React, { useId, useState } from "react"
 import Reveal from "./Reveal"
+
+const CURRENT_YEAR = new Date().getFullYear()
+const LONG_DESCRIPTION = 220
 
 const experiences = [
     {
         company: "Digy Networks",
-        start: "2026",
+        // role: "Tu puesto aquí", // opcional: se muestra bajo el nombre de la empresa
+        start: 2026,
         end: null, // null = trabajo actual
         description:
             "Somos una empresa 100% mexicana especializada en internet por fibra óptica. Más de 15 años llevando conectividad de alta calidad por todo México para donde más se necesita: hogares, empresas e instituciones.",
     },
     {
         company: "Connectivity Solutions",
-        start: "2021",
-        end: "2026",
+        start: 2021,
+        end: 2026,
         description:
             "Con más de 10 años de experiencia y una amplia cartera de proyectos exitosos, somos su mejor opción para mantener la seguridad, continuidad e incluso visibilidad de sus conexiones a internet. Nuestro servicio de monitoreo de enlaces de red, levantamiento y seguridad está diseñado para satisfacer las necesidades de cualquier organización que dependa de redes de internet. Como expertos en el campo, ofrecemos soluciones de clase mundial, personalizadas y adaptadas a las necesidades individuales de cada cliente.",
     },
     {
         company: "Procblisher S.A.S de C.V",
-        start: "2019",
-        end: "2020",
+        start: 2019,
+        end: 2020,
         description:
             "Es una empresa de consultoría y capacitación en Project Management, Agilidad empresarial y Excelencia operativa para empresas y áreas de T.I. que desarrollan software.",
     },
     {
         company: "Creative Solutions",
-        start: "2018",
-        end: "2019",
+        start: 2018,
+        end: 2019,
         description: "",
     },
 ]
 
+// "3 años", "1 año" o null si no alcanza a ser un año completo en el calendario
+const getDuration = (start, end) => {
+    const years = (end ?? CURRENT_YEAR) - start
+    if (years <= 0) return null
+    return `${years} ${years === 1 ? "año" : "años"}`
+}
+
 const ExperienceCard = ({ experience }) => {
     const [expanded, setExpanded] = useState(false)
-    const { company, start, end, description } = experience
+    const descId = useId()
+    const { company, role, start, end, description } = experience
     const isCurrent = end === null
-    const isLong = description.length > 220
+    const isLong = description.length > LONG_DESCRIPTION
+    const duration = getDuration(start, end)
 
     return (
         <div className="relative pl-8 md:pl-10">
@@ -45,13 +58,12 @@ const ExperienceCard = ({ experience }) => {
                 className="absolute left-0 top-7 flex h-4 w-4 -translate-x-1/2 items-center justify-center"
             >
                 {isCurrent && (
-                    <span className="absolute h-4 w-4 animate-ping rounded-full bg-cyan-400/60" />
+                    // motion-safe: no parpadea si el usuario pidió reducir movimiento
+                    <span className="absolute h-4 w-4 rounded-full bg-cyan-400/60 motion-safe:animate-ping" />
                 )}
                 <span
                     className={`relative h-3 w-3 rounded-full border-2 ${
-                        isCurrent
-                            ? "border-cyan-300 bg-cyan-400"
-                            : "border-gray-600 bg-gray-900"
+                        isCurrent ? "border-cyan-300 bg-cyan-400" : "border-gray-600 bg-gray-900"
                     }`}
                 />
             </span>
@@ -59,21 +71,27 @@ const ExperienceCard = ({ experience }) => {
             <article className="group rounded-2xl border border-white/10 bg-gray-900/50 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-xl hover:shadow-cyan-500/10">
                 <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">
                     <span className="rounded-md border border-white/10 bg-gray-950/70 px-2 py-1 font-mono text-xs text-cyan-300">
-                        {start} → {isCurrent ? "presente" : end}
+                        <time dateTime={String(start)}>{start}</time>
+                        {" → "}
+                        {isCurrent ? "presente" : <time dateTime={String(end)}>{end}</time>}
+                        {duration && <span className="text-gray-500"> · {duration}</span>}
                     </span>
                     {isCurrent && (
                         <span className="flex items-center gap-1.5 font-mono text-xs text-emerald-400">
-                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                             actual
+                            <span className="sr-only"> (trabajo actual)</span>
                         </span>
                     )}
                 </div>
 
                 <h3 className="text-xl font-semibold text-gray-100 md:text-2xl">{company}</h3>
+                {role && <p className="mt-1 font-mono text-sm text-violet-400">{role}</p>}
 
                 {description && (
                     <>
                         <p
+                            id={descId}
                             className={`mt-3 text-sm leading-6 text-gray-400 md:text-base md:leading-7 ${
                                 expanded ? "" : "line-clamp-4"
                             }`}
@@ -85,7 +103,8 @@ const ExperienceCard = ({ experience }) => {
                                 type="button"
                                 onClick={() => setExpanded((v) => !v)}
                                 aria-expanded={expanded}
-                                className="mt-2 font-mono text-xs text-cyan-400 transition-colors hover:text-cyan-300"
+                                aria-controls={descId}
+                                className="mt-2 rounded font-mono text-xs text-cyan-400 transition-colors hover:text-cyan-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40"
                             >
                                 {expanded ? "// ver menos" : "// ver más"}
                             </button>
@@ -115,14 +134,16 @@ const Experience = () => {
                 </h2>
             </div>
 
-            {/* Línea vertical del timeline */}
-            <div className="relative ml-2 space-y-8 border-l border-white/10">
+            {/* Línea vertical del timeline: lista ordenada (más reciente primero) */}
+            <ol className="relative ml-2 space-y-8 border-l border-white/10" aria-label="Experiencia laboral">
                 {experiences.map((experience) => (
-                    <Reveal key={experience.company}>
-                        <ExperienceCard experience={experience} />
-                    </Reveal>
+                    <li key={`${experience.company}-${experience.start}`}>
+                        <Reveal>
+                            <ExperienceCard experience={experience} />
+                        </Reveal>
+                    </li>
                 ))}
-            </div>
+            </ol>
         </section>
     )
 }
