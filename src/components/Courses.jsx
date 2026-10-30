@@ -1,6 +1,8 @@
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { SiUdemy } from "react-icons/si"
 import { FiExternalLink } from "react-icons/fi"
+import { AiOutlineClose } from "react-icons/ai"
+import { AnimatePresence, motion } from "framer-motion"
 import course1 from "../assets/Course/course1.jpg"
 import course2 from "../assets/Course/course2.png"
 import course3 from "../assets/Course/course3.jpeg"
@@ -17,6 +19,7 @@ import course13 from "../assets/Course/course13.png"
 import Reveal from "./Reveal"
 
 const CATEGORIES = ["Todos", "Académico", "Web", "Cloud y Redes", "IA y Python"]
+const LONG_DESCRIPTION = 150
 
 const cursos = [
     {
@@ -160,24 +163,33 @@ const cursos = [
 
 const isUdemy = (url) => url.includes("udemy.com")
 
+// Conteo por categoría, calculado una sola vez (los datos son estáticos)
+const COUNTS = cursos.reduce(
+    (acc, c) => ({ ...acc, [c.category]: (acc[c.category] ?? 0) + 1 }),
+    { Todos: cursos.length }
+)
+
 /* ───────── Tarjeta ───────── */
 const CourseCard = ({ course, index, onOpen }) => {
     const [expanded, setExpanded] = useState(false)
-    const isLong = course.description.length > 150
+    const isLong = course.description.length > LONG_DESCRIPTION
+    const descId = `course-desc-${index}`
 
     return (
         <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-gray-900/50 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-400/40 hover:shadow-xl hover:shadow-cyan-500/10">
             {/* Imagen */}
             <button
                 type="button"
-                onClick={() => onOpen(course)}
+                onClick={(e) => onOpen(course, e.currentTarget)}
                 aria-label={`Ver certificado: ${course.title}`}
                 className="relative block aspect-[16/10] overflow-hidden bg-gray-950 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40"
             >
+                {/* alt vacío: el botón ya tiene aria-label, así no se lee dos veces */}
                 <img
                     src={course.img}
-                    alt={course.title}
+                    alt=""
                     loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -191,14 +203,19 @@ const CourseCard = ({ course, index, onOpen }) => {
                 <p className="mb-1 font-mono text-xs text-violet-400">{course.issuer}</p>
                 <h3 className="mb-3 text-lg font-semibold leading-snug text-gray-100">{course.title}</h3>
 
-                <p className={`text-sm leading-6 text-gray-400 ${expanded ? "" : "line-clamp-3"}`}>
+                <p
+                    id={descId}
+                    className={`text-sm leading-6 text-gray-400 ${expanded ? "" : "line-clamp-3"}`}
+                >
                     {course.description}
                 </p>
                 {isLong && (
                     <button
                         type="button"
                         onClick={() => setExpanded((v) => !v)}
-                        className="mt-2 self-start font-mono text-xs text-cyan-400 transition-colors hover:text-cyan-300"
+                        aria-expanded={expanded}
+                        aria-controls={descId}
+                        className="mt-2 self-start rounded font-mono text-xs text-cyan-400 transition-colors hover:text-cyan-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40"
                     >
                         {expanded ? "// ver menos" : "// ver más"}
                     </button>
@@ -208,7 +225,7 @@ const CourseCard = ({ course, index, onOpen }) => {
                 <div className="mt-auto flex gap-3 pt-5">
                     <button
                         type="button"
-                        onClick={() => onOpen(course)}
+                        onClick={(e) => onOpen(course, e.currentTarget)}
                         className="flex-1 rounded-lg bg-gradient-to-r from-cyan-500 to-violet-600 px-4 py-2 font-mono text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/30 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40 active:scale-[0.98]"
                     >
                         Ver certificado
@@ -218,7 +235,7 @@ const CourseCard = ({ course, index, onOpen }) => {
                         href={course.links.external}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`Abrir enlace externo de ${course.title}`}
+                        aria-label={`Abrir enlace externo de ${course.title} (se abre en una pestaña nueva)`}
                         className="flex items-center justify-center rounded-lg border border-white/10 bg-white/5 px-3 text-gray-300 transition-colors hover:border-cyan-400/50 hover:text-cyan-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40"
                     >
                         {isUdemy(course.links.external) ? <SiUdemy size={18} /> : <FiExternalLink size={18} />}
@@ -233,24 +250,38 @@ const CourseCard = ({ course, index, onOpen }) => {
 const Courses = () => {
     const [selected, setSelected] = useState(null)
     const [filter, setFilter] = useState("Todos")
+    const closeRef = useRef(null)
+    const triggerRef = useRef(null) // elemento que abrió el modal, para devolverle el foco
 
     const visible = useMemo(
         () => (filter === "Todos" ? cursos : cursos.filter((c) => c.category === filter)),
         [filter]
     )
 
-    // Cerrar con ESC y bloquear scroll mientras el modal está abierto
+    const openCertificate = useCallback((course, trigger) => {
+        triggerRef.current = trigger
+        setSelected(course)
+    }, [])
+
+    const closeCertificate = useCallback(() => setSelected(null), [])
+
+    // Esc para cerrar, bloqueo de scroll, foco al botón de cerrar y foco de vuelta al salir
     useEffect(() => {
         if (!selected) return
-        const onKey = (e) => e.key === "Escape" && setSelected(null)
+
+        const onKey = (e) => e.key === "Escape" && closeCertificate()
         document.addEventListener("keydown", onKey)
-        const prev = document.body.style.overflow
+
+        const prevOverflow = document.body.style.overflow
         document.body.style.overflow = "hidden"
+        closeRef.current?.focus()
+
         return () => {
             document.removeEventListener("keydown", onKey)
-            document.body.style.overflow = prev
+            document.body.style.overflow = prevOverflow
+            triggerRef.current?.focus?.()
         }
-    }, [selected])
+    }, [selected, closeCertificate])
 
     return (
         <section className="relative mx-auto max-w-[1100px] px-6 py-16 md:py-24" id="courses">
@@ -270,16 +301,15 @@ const Courses = () => {
                 </h2>
             </div>
 
-            {/* Filtros */}
-            <div className="relative mb-10 flex flex-wrap gap-2" role="tablist" aria-label="Filtrar por categoría">
+            {/* Filtros (botones con aria-pressed: no hay paneles, así que no son "tabs") */}
+            <div className="relative mb-10 flex flex-wrap gap-2" role="group" aria-label="Filtrar por categoría">
                 {CATEGORIES.map((cat) => {
                     const active = filter === cat
                     return (
                         <button
                             key={cat}
                             type="button"
-                            role="tab"
-                            aria-selected={active}
+                            aria-pressed={active}
                             onClick={() => setFilter(cat)}
                             className={`rounded-md border px-3 py-1.5 font-mono text-xs transition-all duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/30 ${
                                 active
@@ -287,58 +317,91 @@ const Courses = () => {
                                     : "border-white/10 bg-white/5 text-gray-400 hover:border-white/30 hover:text-gray-200"
                             }`}
                         >
-                            {cat}
+                            {cat} <span className="opacity-60">({COUNTS[cat] ?? 0})</span>
                         </button>
                     )
                 })}
             </div>
 
+            {/* Anuncia a lectores de pantalla cuántos resultados hay tras filtrar */}
+            <p className="sr-only" aria-live="polite">
+                {visible.length} certificados mostrados
+            </p>
+
             {/* Grid */}
             <div className="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {visible.map((course, i) => (
                     <Reveal key={course.title}>
-                        <CourseCard course={course} index={i} onOpen={setSelected} />
+                        <CourseCard course={course} index={i} onOpen={openCertificate} />
                     </Reveal>
                 ))}
             </div>
 
             {/* Modal */}
-            {selected && (
-                <div
-                    role="dialog"
-                    aria-modal="true"
-                    aria-label={`Certificado: ${selected.title}`}
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-gray-950/85 p-4 backdrop-blur-md"
-                    onClick={() => setSelected(null)}
-                >
-                    <div
-                        className="relative max-h-full w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-gray-900 shadow-2xl shadow-black/60"
-                        onClick={(e) => e.stopPropagation()}
+            <AnimatePresence>
+                {selected && (
+                    <motion.div
+                        key="certificate-modal"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label={`Certificado: ${selected.title}`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="fixed inset-0 z-[70] flex items-center justify-center bg-gray-950/85 p-4 backdrop-blur-md"
+                        onClick={closeCertificate}
                     >
-                        {/* Barra tipo ventana */}
-                        <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.03] px-4 py-3">
-                            <button
-                                type="button"
-                                onClick={() => setSelected(null)}
-                                aria-label="Cerrar"
-                                className="h-3 w-3 rounded-full bg-red-500/80 transition-colors hover:bg-red-400"
-                            />
-                            <span className="h-3 w-3 rounded-full bg-yellow-500/80" />
-                            <span className="h-3 w-3 rounded-full bg-green-500/80" />
-                            <span className="ml-3 truncate font-mono text-xs text-gray-500">
-                                {selected.title}.png
-                            </span>
-                            <span className="ml-auto hidden font-mono text-xs text-gray-600 sm:block">esc para cerrar</span>
-                        </div>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.96, y: 12 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.96, y: 12 }}
+                            transition={{ duration: 0.2 }}
+                            className="relative max-h-full w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-gray-900 shadow-2xl shadow-black/60"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            {/* Barra tipo ventana */}
+                            <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.03] px-4 py-3">
+                                {/* Punto rojo con área de toque más grande (-m-2 p-2) */}
+                                <button
+                                    type="button"
+                                    onClick={closeCertificate}
+                                    aria-label="Cerrar"
+                                    tabIndex={-1}
+                                    className="group -m-2 p-2"
+                                >
+                                    <span className="block h-3 w-3 rounded-full bg-red-500/80 transition-colors group-hover:bg-red-400" />
+                                </button>
+                                <span aria-hidden="true" className="h-3 w-3 rounded-full bg-yellow-500/80" />
+                                <span aria-hidden="true" className="h-3 w-3 rounded-full bg-green-500/80" />
+                                <span className="ml-3 truncate font-mono text-xs text-gray-500">
+                                    {selected.title}.png
+                                </span>
+                                <span className="ml-auto hidden font-mono text-xs text-gray-600 sm:block">
+                                    esc para cerrar
+                                </span>
 
-                        <img
-                            src={selected.links.site}
-                            alt={`Certificado: ${selected.title}`}
-                            className="max-h-[80vh] w-full object-contain"
-                        />
-                    </div>
-                </div>
-            )}
+                                {/* Botón de cerrar visible en móvil */}
+                                <button
+                                    ref={closeRef}
+                                    type="button"
+                                    onClick={closeCertificate}
+                                    aria-label="Cerrar certificado"
+                                    className="ml-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-200 transition-colors hover:border-cyan-400/50 hover:text-cyan-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40 sm:ml-2"
+                                >
+                                    <AiOutlineClose size={18} />
+                                </button>
+                            </div>
+
+                            <img
+                                src={selected.links.site}
+                                alt={`Certificado: ${selected.title}`}
+                                className="max-h-[75dvh] w-full object-contain"
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     )
 }
