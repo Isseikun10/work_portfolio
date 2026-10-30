@@ -85,16 +85,16 @@ const Navbar = () => {
                         ))}
                     </ul>
 
-                    {/* Botón hamburguesa */}
+                    {/* Botón hamburguesa (solo abre; el cierre vive dentro del menú) */}
                     <button
                         type="button"
-                        onClick={() => setOpen((v) => !v)}
-                        aria-label={open ? "Cerrar menú" : "Abrir menú"}
+                        onClick={() => setOpen(true)}
+                        aria-label="Abrir menú"
                         aria-expanded={open}
                         aria-controls="mobile-menu"
-                        className="z-[60] flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-200 transition-colors hover:border-cyan-400/50 hover:text-cyan-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40 md:hidden"
+                        className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-200 transition-colors hover:border-cyan-400/50 hover:text-cyan-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40 md:hidden"
                     >
-                        {open ? <AiOutlineClose size={22} /> : <AiOutlineMenu size={22} />}
+                        <AiOutlineMenu size={22} />
                     </button>
                 </nav>
             </header>
@@ -111,14 +111,32 @@ const Navbar = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: "-100%" }}
                         transition={{ type: "spring", stiffness: 260, damping: 28 }}
-                        className="fixed inset-0 z-50 bg-gray-950/95 backdrop-blur-2xl md:hidden"
+                        className="fixed inset-0 z-[60] bg-gray-950/95 backdrop-blur-2xl md:hidden"
+                        style={{ touchAction: "none" }}
                     >
                         <div
                             aria-hidden="true"
                             className="pointer-events-none absolute -right-20 top-1/3 h-72 w-72 rounded-full bg-violet-500/20 blur-3xl"
                         />
 
-                        <ul className="relative mt-28 space-y-3 px-8">
+                        {/* Barra superior con marca y botón de cerrar */}
+                        <div className="relative flex h-16 items-center justify-between px-6">
+                            <span className="font-semibold text-gray-100">
+                                <span className="font-mono text-cyan-400">&lt;</span>{" "}
+                                Edwin Bonilla Dolores{" "}
+                                <span className="font-mono text-violet-400">/&gt;</span>
+                            </span>
+                            <button
+                                type="button"
+                                onClick={closeNav}
+                                aria-label="Cerrar menú"
+                                className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-200 transition-colors hover:border-cyan-400/50 hover:text-cyan-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40"
+                            >
+                                <AiOutlineClose size={22} />
+                            </button>
+                        </div>
+
+                        <ul className="relative mt-8 space-y-3 px-8">
                             {LINKS.map(({ to, label }, i) => (
                                 <motion.li
                                     key={to}
