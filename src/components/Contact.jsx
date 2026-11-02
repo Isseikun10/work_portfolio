@@ -129,18 +129,14 @@ const Contact = () => {
                         <p className="mb-3 font-mono text-sm text-cyan-400">&lt;about /&gt;</p>
 
                         <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">
-                            Acerca de{" "}
-                            <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
-                                mí
-                            </span>
+                            Desarrollador full stack: React, Node.js y .NET
                         </h2>
 
                         <p className="max-w-prose leading-7 text-gray-400">
                             Desarrollador de software con sólida experiencia en la creación de soluciones
                             informáticas a medida. Mis habilidades en programación orientada a objetos e
                             ingeniería de software me permiten transformar las necesidades del negocio en
-                            productos eficientes y escalables. Dominio de múltiples lenguajes de programación
-                            para ofrecer soluciones adaptadas a cualquier desafío.
+                            productos eficientes y escalables.
                         </p>
 
                         {/* Stack */}
@@ -189,7 +185,7 @@ const Contact = () => {
                             id="form"
                         >
                             <p className="mb-6 font-mono text-lg font-semibold text-gray-100">
-                                <span className="text-cyan-400">$</span> Vamos, ¡contáctame!
+                                <span className="text-cyan-400">$</span> Escríbeme por una vacante o proyecto
                                 <span
                                     aria-hidden="true"
                                     className="ml-1 inline-block h-5 w-2 translate-y-1 animate-pulse bg-cyan-400"
