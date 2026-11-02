@@ -294,10 +294,7 @@ const Courses = () => {
             <div className="relative mb-10">
                 <p className="mb-3 font-mono text-sm text-cyan-400">&lt;certifications /&gt;</p>
                 <h2 className="text-4xl font-bold text-white md:text-5xl">
-                    Cursos y{" "}
-                    <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
-                        certificados
-                    </span>
+                    Formación académica y certificados técnicos
                 </h2>
             </div>
 

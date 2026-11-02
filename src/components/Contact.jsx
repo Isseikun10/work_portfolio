@@ -9,7 +9,7 @@ const REQUEST_TIMEOUT_MS = 10000
 const STATS = [
     { value: 15, label: "Proyectos" },
     { value: 5, label: "Años de experiencia" },
-    { value: 25, label: "Clientes felices" },
+    { value: 25, label: "Clientes atendidos" },
 ]
 
 const STACK = ["React", "Node.js", ".NET", "Laravel", "Tailwind", "AWS"]
