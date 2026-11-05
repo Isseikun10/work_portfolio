@@ -5,10 +5,10 @@ import { AnimatePresence, motion } from "framer-motion"
 
 // "to" debe coincidir con el id de cada sección
 const LINKS = [
-    { to: "skills", label: "Acerca de" },
+    { to: "skills", label: "Tecnologías" },
     { to: "experience", label: "Experiencia" },
-    { to: "portfolio", label: "Portafolio" },
-    { to: "courses", label: "Cursos y Certificados" },
+    { to: "portfolio", label: "Proyectos" },
+    { to: "courses", label: "Formación" },
     { to: "contact", label: "Contacto" },
 ]
 
@@ -88,10 +88,10 @@ const Navbar = () => {
     return (
         <>
             <header
-                className={`fixed left-0 top-0 z-50 w-full border-b backdrop-blur-xl transition-all duration-300 ${
+                className={`fixed left-0 top-0 z-50 w-full border-b transition-colors duration-300 ${
                     scrolled
-                        ? "border-white/10 bg-gray-950/80 shadow-lg shadow-black/20"
-                        : "border-transparent bg-gray-950/30"
+                        ? "border-line bg-canvas "
+                        : "border-transparent bg-canvas"
                 }`}
             >
                 <nav
@@ -102,16 +102,10 @@ const Navbar = () => {
                     <a
                         href="#home"
                         onClick={goTop}
-                        className="group flex items-center gap-2 rounded-md font-semibold text-gray-100 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40"
+                        className="group flex items-center gap-2 rounded font-semibold text-fg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
                     >
-                        <span className="font-mono text-cyan-400 transition-transform duration-300 group-hover:-translate-x-0.5">
-                            &lt;
-                        </span>
                         <span className="text-base md:text-lg">
                             Edwin Bonilla<span className="hidden sm:inline"> Dolores</span>
-                        </span>
-                        <span className="font-mono text-violet-400 transition-transform duration-300 group-hover:translate-x-0.5">
-                            /&gt;
                         </span>
                     </a>
 
@@ -123,8 +117,8 @@ const Navbar = () => {
                                     to={to}
                                     href={`#${to}`}
                                     {...scrollProps}
-                                    activeClass="text-cyan-300! bg-cyan-400/10! border-cyan-400/30!"
-                                    className="cursor-pointer rounded-lg border border-transparent px-3 py-2 font-mono text-sm text-gray-400 transition-all duration-200 hover:bg-white/5 hover:text-gray-100 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40"
+                                    activeClass="text-accent! bg-surface! border-line!"
+                                    className="cursor-pointer rounded border border-transparent px-3 py-2 font-mono text-sm text-muted transition-colors duration-200 hover:bg-surface hover:text-fg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
                                 >
                                     {label}
                                 </Link>
@@ -140,7 +134,7 @@ const Navbar = () => {
                         aria-label="Abrir menú"
                         aria-expanded={open}
                         aria-controls="mobile-menu"
-                        className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-200 transition-colors hover:border-cyan-400/50 hover:text-cyan-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40 md:hidden"
+                        className="flex h-10 w-10 items-center justify-center rounded border border-line bg-surface text-fg transition-colors hover:border-accent hover:text-fg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas md:hidden"
                     >
                         <AiOutlineMenu size={22} />
                     </button>
@@ -156,29 +150,23 @@ const Navbar = () => {
                         role="dialog"
                         aria-modal="true"
                         aria-label="Menú de navegación"
-                        initial={{ opacity: 0, x: "-100%" }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: "-100%" }}
-                        transition={{ type: "spring", stiffness: 260, damping: 28 }}
-                        className="fixed inset-0 z-[60] overflow-y-auto overscroll-contain bg-gray-950/95 backdrop-blur-2xl md:hidden"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.15 }}
+                        className="fixed inset-0 z-[60] overflow-y-auto overscroll-contain bg-canvas md:hidden"
                     >
-                        <div
-                            aria-hidden="true"
-                            className="pointer-events-none absolute -right-20 top-1/3 h-72 w-72 rounded-full bg-violet-500/20 blur-3xl"
-                        />
-
                         {/* Barra superior con marca y botón de cerrar */}
                         <div className="relative flex h-16 items-center justify-between px-6">
-                            <span className="font-semibold text-gray-100">
-                                <span className="font-mono text-cyan-400">&lt;</span> Edwin Bonilla Dolores{" "}
-                                <span className="font-mono text-violet-400">/&gt;</span>
+                            <span className="font-semibold text-fg">
+                                Edwin Bonilla Dolores
                             </span>
                             <button
                                 ref={closeBtnRef}
                                 type="button"
                                 onClick={closeNav}
                                 aria-label="Cerrar menú"
-                                className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-200 transition-colors hover:border-cyan-400/50 hover:text-cyan-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40"
+                                className="flex h-10 w-10 items-center justify-center rounded border border-line bg-surface text-fg transition-colors hover:border-accent hover:text-fg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
                             >
                                 <AiOutlineClose size={22} />
                             </button>
@@ -186,26 +174,21 @@ const Navbar = () => {
 
                         <ul className="relative mt-8 space-y-3 px-8 pb-12">
                             {LINKS.map(({ to, label }, i) => (
-                                <motion.li
-                                    key={to}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.1 + i * 0.06 }}
-                                >
+                                <li key={to}>
                                     <Link
                                         to={to}
                                         href={`#${to}`}
                                         onClick={closeNav}
                                         {...scrollProps}
-                                        activeClass="text-cyan-300! border-cyan-400/40!"
-                                        className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-xl font-semibold text-gray-200 transition-colors hover:border-cyan-400/40 hover:text-cyan-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40"
+                                        activeClass="text-accent! border-accent!"
+                                        className="flex items-center gap-4 rounded border border-line bg-surface px-5 py-4 text-xl font-semibold text-fg transition-colors hover:border-accent hover:text-fg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
                                     >
-                                        <span className="font-mono text-sm text-cyan-400">
+                                        <span className="font-mono text-sm text-accent">
                                             {String(i + 1).padStart(2, "0")}
                                         </span>
                                         {label}
                                     </Link>
-                                </motion.li>
+                                </li>
                             ))}
                         </ul>
                     </motion.div>

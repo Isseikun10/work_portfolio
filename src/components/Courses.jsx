@@ -16,7 +16,6 @@ import course10 from "../assets/Course/course10.png"
 import course11 from "../assets/Course/course11.png"
 import course12 from "../assets/Course/course12.png"
 import course13 from "../assets/Course/course13.png"
-import Reveal from "./Reveal"
 
 const CATEGORIES = ["Todos", "Académico", "Web", "Cloud y Redes", "IA y Python"]
 const LONG_DESCRIPTION = 150
@@ -176,13 +175,13 @@ const CourseCard = ({ course, index, onOpen }) => {
     const descId = `course-desc-${index}`
 
     return (
-        <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-gray-900/50 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-400/40 hover:shadow-xl hover:shadow-cyan-500/10">
+        <article className="group flex h-full flex-col overflow-hidden rounded border border-line bg-surface transition-colors duration-300 hover:border-accent">
             {/* Imagen */}
             <button
                 type="button"
                 onClick={(e) => onOpen(course, e.currentTarget)}
                 aria-label={`Ver certificado: ${course.title}`}
-                className="relative block aspect-[16/10] overflow-hidden bg-gray-950 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40"
+                className="relative block aspect-[16/10] overflow-hidden bg-canvas focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
             >
                 {/* alt vacío: el botón ya tiene aria-label, así no se lee dos veces */}
                 <img
@@ -190,22 +189,21 @@ const CourseCard = ({ course, index, onOpen }) => {
                     alt=""
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <span className="absolute left-3 top-3 rounded-md border border-white/10 bg-gray-950/70 px-2 py-1 font-mono text-[11px] text-cyan-300 backdrop-blur">
+                <span className="absolute left-3 top-3 rounded border border-line bg-canvas px-2 py-1 font-mono text-[11px] text-accent">
                     {String(index + 1).padStart(2, "0")} / {course.category}
                 </span>
             </button>
 
             {/* Contenido */}
             <div className="flex flex-1 flex-col p-5">
-                <p className="mb-1 font-mono text-xs text-violet-400">{course.issuer}</p>
-                <h3 className="mb-3 text-lg font-semibold leading-snug text-gray-100">{course.title}</h3>
+                <p className="mb-1 font-mono text-xs text-muted">{course.issuer}</p>
+                <h3 className="mb-3 text-lg font-semibold leading-snug text-fg">{course.title}</h3>
 
                 <p
                     id={descId}
-                    className={`text-sm leading-6 text-gray-400 ${expanded ? "" : "line-clamp-3"}`}
+                    className={`text-sm leading-6 text-muted ${expanded ? "" : "line-clamp-3"}`}
                 >
                     {course.description}
                 </p>
@@ -215,9 +213,9 @@ const CourseCard = ({ course, index, onOpen }) => {
                         onClick={() => setExpanded((v) => !v)}
                         aria-expanded={expanded}
                         aria-controls={descId}
-                        className="mt-2 self-start rounded font-mono text-xs text-cyan-400 transition-colors hover:text-cyan-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40"
+                        className="mt-2 self-start rounded font-mono text-xs text-accent transition-colors hover:text-fg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
                     >
-                        {expanded ? "// ver menos" : "// ver más"}
+                        {expanded ? "Ver menos" : "Ver más"}
                     </button>
                 )}
 
@@ -226,7 +224,7 @@ const CourseCard = ({ course, index, onOpen }) => {
                     <button
                         type="button"
                         onClick={(e) => onOpen(course, e.currentTarget)}
-                        className="flex-1 rounded-lg bg-gradient-to-r from-cyan-500 to-violet-600 px-4 py-2 font-mono text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/30 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40 active:scale-[0.98]"
+                        className="flex-1 rounded bg-accent hover:bg-accent/90 px-4 py-2 font-mono text-sm font-semibold text-canvas transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
                     >
                         Ver certificado
                     </button>
@@ -236,7 +234,7 @@ const CourseCard = ({ course, index, onOpen }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`Abrir enlace externo de ${course.title} (se abre en una pestaña nueva)`}
-                        className="flex items-center justify-center rounded-lg border border-white/10 bg-white/5 px-3 text-gray-300 transition-colors hover:border-cyan-400/50 hover:text-cyan-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40"
+                        className="flex items-center justify-center rounded border border-line bg-surface px-3 text-fg transition-colors hover:border-accent hover:text-fg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
                     >
                         {isUdemy(course.links.external) ? <SiUdemy size={18} /> : <FiExternalLink size={18} />}
                     </a>
@@ -285,15 +283,10 @@ const Courses = () => {
 
     return (
         <section className="relative mx-auto max-w-[1100px] px-6 py-16 md:py-24" id="courses">
-            <div
-                aria-hidden="true"
-                className="pointer-events-none absolute right-0 top-10 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl"
-            />
-
             {/* Encabezado */}
             <div className="relative mb-10">
-                <p className="mb-3 font-mono text-sm text-cyan-400">&lt;certifications /&gt;</p>
-                <h2 className="text-4xl font-bold text-white md:text-5xl">
+                <p className="mb-3 font-mono text-sm text-accent">04 — Credenciales</p>
+                <h2 className="text-4xl font-bold text-fg md:text-5xl">
                     Formación académica y certificados técnicos
                 </h2>
             </div>
@@ -308,10 +301,10 @@ const Courses = () => {
                             type="button"
                             aria-pressed={active}
                             onClick={() => setFilter(cat)}
-                            className={`rounded-md border px-3 py-1.5 font-mono text-xs transition-all duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/30 ${
+                            className={`rounded border px-3 py-1.5 font-mono text-xs transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas ${
                                 active
-                                    ? "border-cyan-400/60 bg-cyan-400/10 text-cyan-300"
-                                    : "border-white/10 bg-white/5 text-gray-400 hover:border-white/30 hover:text-gray-200"
+                                    ? "border-accent bg-surface text-accent"
+                                    : "border-line bg-surface text-muted hover:border-muted hover:text-fg"
                             }`}
                         >
                             {cat} <span className="opacity-60">({COUNTS[cat] ?? 0})</span>
@@ -328,9 +321,7 @@ const Courses = () => {
             {/* Grid */}
             <div className="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {visible.map((course, i) => (
-                    <Reveal key={course.title}>
-                        <CourseCard course={course} index={i} onOpen={openCertificate} />
-                    </Reveal>
+                    <CourseCard key={course.title} course={course} index={i} onOpen={openCertificate} />
                 ))}
             </div>
 
@@ -346,35 +337,19 @@ const Courses = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed inset-0 z-[70] flex items-center justify-center bg-gray-950/85 p-4 backdrop-blur-md"
+                        className="fixed inset-0 z-[70] flex items-center justify-center bg-canvas/90 p-4"
                         onClick={closeCertificate}
                     >
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.96, y: 12 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.96, y: 12 }}
-                            transition={{ duration: 0.2 }}
-                            className="relative max-h-full w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-gray-900 shadow-2xl shadow-black/60"
+                        <div
+                            className="relative max-h-full w-full max-w-4xl overflow-hidden rounded border border-line bg-surface"
                             onClick={(e) => e.stopPropagation()}
                         >
                             {/* Barra tipo ventana */}
-                            <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.03] px-4 py-3">
-                                {/* Punto rojo con área de toque más grande (-m-2 p-2) */}
-                                <button
-                                    type="button"
-                                    onClick={closeCertificate}
-                                    aria-label="Cerrar"
-                                    tabIndex={-1}
-                                    className="group -m-2 p-2"
-                                >
-                                    <span className="block h-3 w-3 rounded-full bg-red-500/80 transition-colors group-hover:bg-red-400" />
-                                </button>
-                                <span aria-hidden="true" className="h-3 w-3 rounded-full bg-yellow-500/80" />
-                                <span aria-hidden="true" className="h-3 w-3 rounded-full bg-green-500/80" />
-                                <span className="ml-3 truncate font-mono text-xs text-gray-500">
+                            <div className="flex items-center gap-2 border-b border-line bg-surface px-4 py-3">
+                                <span className="truncate font-mono text-xs text-muted">
                                     {selected.title}.png
                                 </span>
-                                <span className="ml-auto hidden font-mono text-xs text-gray-600 sm:block">
+                                <span className="ml-auto hidden font-mono text-xs text-muted sm:block">
                                     esc para cerrar
                                 </span>
 
@@ -384,7 +359,7 @@ const Courses = () => {
                                     type="button"
                                     onClick={closeCertificate}
                                     aria-label="Cerrar certificado"
-                                    className="ml-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-200 transition-colors hover:border-cyan-400/50 hover:text-cyan-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40 sm:ml-2"
+                                    className="ml-auto flex h-9 w-9 shrink-0 items-center justify-center rounded border border-line bg-surface text-fg transition-colors hover:border-accent hover:text-fg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:ml-2"
                                 >
                                     <AiOutlineClose size={18} />
                                 </button>
@@ -395,7 +370,7 @@ const Courses = () => {
                                 alt={`Certificado: ${selected.title}`}
                                 className="max-h-[75dvh] w-full object-contain"
                             />
-                        </motion.div>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>

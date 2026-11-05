@@ -1,5 +1,4 @@
 import React, { useId, useState } from "react"
-import Reveal from "./Reveal"
 
 const CURRENT_YEAR = new Date().getFullYear()
 const LONG_DESCRIPTION = 220
@@ -57,42 +56,38 @@ const ExperienceCard = ({ experience }) => {
                 aria-hidden="true"
                 className="absolute left-0 top-7 flex h-4 w-4 -translate-x-1/2 items-center justify-center"
             >
-                {isCurrent && (
-                    // motion-safe: no parpadea si el usuario pidió reducir movimiento
-                    <span className="absolute h-4 w-4 rounded-full bg-cyan-400/60 motion-safe:animate-ping" />
-                )}
                 <span
                     className={`relative h-3 w-3 rounded-full border-2 ${
-                        isCurrent ? "border-cyan-300 bg-cyan-400" : "border-gray-600 bg-gray-900"
+                        isCurrent ? "border-ok bg-ok" : "border-line bg-surface"
                     }`}
                 />
             </span>
 
-            <article className="group rounded-2xl border border-white/10 bg-gray-900/50 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-xl hover:shadow-cyan-500/10">
+            <article className="group rounded border border-line bg-surface p-6 transition-colors duration-300 hover:border-accent">
                 <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">
-                    <span className="rounded-md border border-white/10 bg-gray-950/70 px-2 py-1 font-mono text-xs text-cyan-300">
+                    <span className="rounded border border-line bg-canvas px-2 py-1 font-mono text-xs text-accent">
                         <time dateTime={String(start)}>{start}</time>
-                        {" → "}
+                        {" – "}
                         {isCurrent ? "presente" : <time dateTime={String(end)}>{end}</time>}
-                        {duration && <span className="text-gray-500"> · {duration}</span>}
+                        {duration && <span className="text-muted"> · {duration}</span>}
                     </span>
                     {isCurrent && (
-                        <span className="flex items-center gap-1.5 font-mono text-xs text-emerald-400">
-                            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                        <span className="flex items-center gap-1.5 font-mono text-xs text-ok">
+                            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-ok" />
                             actual
                             <span className="sr-only"> (trabajo actual)</span>
                         </span>
                     )}
                 </div>
 
-                <h3 className="text-xl font-semibold text-gray-100 md:text-2xl">{company}</h3>
-                {role && <p className="mt-1 font-mono text-sm text-violet-400">{role}</p>}
+                <h3 className="text-xl font-semibold text-fg md:text-2xl">{company}</h3>
+                {role && <p className="mt-1 font-mono text-sm text-muted">{role}</p>}
 
                 {description && (
                     <>
                         <p
                             id={descId}
-                            className={`mt-3 text-sm leading-6 text-gray-400 md:text-base md:leading-7 ${
+                            className={`mt-3 text-sm leading-6 text-muted md:text-base md:leading-7 ${
                                 expanded ? "" : "line-clamp-4"
                             }`}
                         >
@@ -104,9 +99,9 @@ const ExperienceCard = ({ experience }) => {
                                 onClick={() => setExpanded((v) => !v)}
                                 aria-expanded={expanded}
                                 aria-controls={descId}
-                                className="mt-2 rounded font-mono text-xs text-cyan-400 transition-colors hover:text-cyan-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400/40"
+                                className="mt-2 rounded font-mono text-xs text-accent transition-colors hover:text-fg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
                             >
-                                {expanded ? "// ver menos" : "// ver más"}
+                                {expanded ? "Ver menos" : "Ver más"}
                             </button>
                         )}
                     </>
@@ -119,28 +114,18 @@ const ExperienceCard = ({ experience }) => {
 const Experience = () => {
     return (
         <section className="relative mx-auto max-w-[760px] px-6 py-16 md:py-24" id="experience">
-            <div
-                aria-hidden="true"
-                className="pointer-events-none absolute left-0 top-20 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl"
-            />
-
             <div className="relative mb-12">
-                <p className="mb-3 font-mono text-sm text-cyan-400">&lt;experience /&gt;</p>
-                <h2 className="text-4xl font-bold text-white md:text-5xl">
-                    Mi{" "}
-                    <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
-                        experiencia
-                    </span>
+                <p className="mb-3 font-mono text-sm text-accent">02 — Trayectoria</p>
+                <h2 className="text-4xl font-bold text-fg md:text-5xl">
+                    Experiencia profesional
                 </h2>
             </div>
 
             {/* Línea vertical del timeline: lista ordenada (más reciente primero) */}
-            <ol className="relative ml-2 space-y-8 border-l border-white/10" aria-label="Experiencia laboral">
+            <ol className="relative ml-2 space-y-8 border-l border-line" aria-label="Experiencia laboral">
                 {experiences.map((experience) => (
                     <li key={`${experience.company}-${experience.start}`}>
-                        <Reveal>
-                            <ExperienceCard experience={experience} />
-                        </Reveal>
+                        <ExperienceCard experience={experience} />
                     </li>
                 ))}
             </ol>

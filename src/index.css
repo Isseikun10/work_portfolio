@@ -1,16 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Montserrat:wght@300;400;600;700;800&display=swap');
+@import "@fontsource/ibm-plex-sans/latin-400.css";
+@import "@fontsource/ibm-plex-sans/latin-500.css";
+@import "@fontsource/ibm-plex-sans/latin-600.css";
+@import "@fontsource/ibm-plex-sans/latin-700.css";
+@import "@fontsource/ibm-plex-mono/latin-400.css";
+@import "@fontsource/ibm-plex-mono/latin-500.css";
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ───────── Design tokens ───────── */
 @theme {
-    --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-    --color-ink: #070b14;
-    --color-primary: #06b6d4;   /* cyan-500 */
-    --color-secondary: #7c3aed; /* violet-600 */
+    /* Hoja de especificaciones: superficies planas y un solo acento */
+    --color-canvas: #0f1114;  /* fondo de página */
+    --color-surface: #16191d; /* bloques y tarjetas */
+    --color-line: #2a2f36;    /* bordes de 1px */
+    --color-fg: #e6e8eb;      /* texto principal */
+    --color-muted: #9aa3ad;   /* texto secundario */
+    --color-accent: #d9774d;  /* óxido: enlaces, rótulos, botón principal */
+    --color-ok: #7fb08a;      /* solo para "trabajo actual" */
+
+    --color-ink: #0f1114; /* alias del fondo anterior; se retira si App no lo usa */
+
+    /* Transitorios: los componentes aún usan cyan/violet; se retiran al migrarlos (arreglo 3) */
+    --color-primary: #06b6d4;
+    --color-secondary: #7c3aed;
 }
 
 /* ───────── Base ─────────
@@ -24,14 +40,8 @@
     }
 
     body {
-        @apply font-sans text-gray-300 antialiased;
-        background-color: var(--color-ink);
-        background-image:
-            radial-gradient(60rem 40rem at 10% -10%, rgba(6, 182, 212, 0.10), transparent 60%),
-            radial-gradient(50rem 40rem at 100% 20%, rgba(124, 58, 237, 0.10), transparent 60%),
-            radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-        background-size: auto, auto, 28px 28px;
-        background-attachment: fixed;
+        @apply font-sans text-fg antialiased;
+        background-color: var(--color-canvas);
     }
 
     h2 {
@@ -43,26 +53,27 @@
     }
 
     ::selection {
-        background: rgba(6, 182, 212, 0.35);
+        background: rgba(217, 119, 77, 0.35);
         color: #fff;
     }
 
     :focus-visible {
-        outline: 2px solid var(--color-primary);
+        outline: 2px solid var(--color-accent);
         outline-offset: 2px;
     }
 
     /* Scrollbar */
     * {
         scrollbar-width: thin;
-        scrollbar-color: #334155 transparent;
+        scrollbar-color: var(--color-line) transparent;
     }
     ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 9999px; }
-    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    ::-webkit-scrollbar-thumb { background: var(--color-line); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3a414a; }
 }
 
 /* ───────── Utilidades propias ───────── */
+/* Se eliminan en el arreglo 3, tras confirmar que App no las usa */
 @utility text-gradient {
     background-image: linear-gradient(to right, var(--color-primary), #8b5cf6);
     -webkit-background-clip: text;
@@ -73,15 +84,6 @@
 /* Reemplaza el antiguo bg-red-600; se mantiene el nombre para no romper componentes existentes */
 @utility bg-primary-color {
     background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
-}
-
-/* Efecto de brillo que sigue al cursor (si lo usas) */
-.shiny-effect {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-    background: radial-gradient(circle, rgba(6, 182, 212, 0.18), transparent 70%);
 }
 
 /* Respeta a quien prefiere menos movimiento */
