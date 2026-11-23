@@ -3,19 +3,20 @@ import { SiUdemy } from "react-icons/si"
 import { FiExternalLink } from "react-icons/fi"
 import { AiOutlineClose } from "react-icons/ai"
 import { AnimatePresence, motion } from "framer-motion"
-import course1 from "../assets/Course/course1.jpg"
-import course2 from "../assets/Course/course2.png"
-import course3 from "../assets/Course/course3.jpeg"
-import course4 from "../assets/Course/course4.jpg"
-import course5 from "../assets/Course/course5.jpg"
-import course6 from "../assets/Course/course6.jpg"
-import course7 from "../assets/Course/course7.jpg"
-import course8 from "../assets/Course/course8.jpg"
-import course9 from "../assets/Course/course9.jpg"
-import course10 from "../assets/Course/course10.png"
-import course11 from "../assets/Course/course11.png"
-import course12 from "../assets/Course/course12.png"
-import course13 from "../assets/Course/course13.png"
+import course1 from "../assets/Course/course1.webp"
+import course2 from "../assets/Course/course2.webp"
+import course3 from "../assets/Course/course3.webp"
+import course4 from "../assets/Course/course4.webp"
+import course5 from "../assets/Course/course5.webp"
+import course6 from "../assets/Course/course6.webp"
+import course7 from "../assets/Course/course7.webp"
+import course8 from "../assets/Course/course8.webp"
+import course9 from "../assets/Course/course9.webp"
+import course10 from "../assets/Course/course10.webp"
+import course11 from "../assets/Course/course11.webp"
+import course12 from "../assets/Course/course12.webp"
+import course13 from "../assets/Course/course13.webp"
+import course14 from "../assets/Course/course14.webp"
 
 const CATEGORIES = ["Todos", "Académico", "Web", "Cloud y Redes", "IA y Python"]
 const LONG_DESCRIPTION = 150
@@ -152,12 +153,25 @@ const cursos = [
         issuer: "Cisco · Credly",
         title: "Python Essentials 2",
         description:
-            "Cisco, in collaboration with OpenEDG Python Institute, verifies the earner of this badge successfully completed the Python Essentials 2 course and achieved the student level credentials. Earners have knowledge and skills in intermediate aspects of Python programming, including modules, packages, exceptions, file processing, as well as general coding techniques and object-oriented programming (OOP), and prepares the learner for the PCAP – Certified Associate in Python Programming certification.",
+            "Cisco, in collaboration with OpenEDG Python Institute, verifies the earner of this badge successfully completed the Python Essentials 2 course and achieved the student level credentials. Earners have knowledge of the concepts of computer programming, the syntax and semantics of the Python language as well as demonstrate the ability to accomplish coding tasks related to the essentials of programming in the Python language and resolve implementation challenges using the Python Standard Library.",
         links: {
             site: course13,
             external: "https://www.credly.com/badges/3d1330c4-05d9-4e9e-b209-a9ea829afa71/public_url",
         },
     },
+    {
+        img: course14,
+        category: "Web",
+        issuer: "Cisco · Credly",
+        title: "JavaScript Essentials 1",
+        description:
+            "Cisco, in collaboration with OpenEDG JS Institute, verifies the earner of this badge successfully completed the JavaScript Essentials 1 course and achieved the student level credentials. Earners know the syntax of the core JavaScript; can work with variables, operators, flow control, and functions; know the basics of data types system; think algorithmically and can analyze problems using a programmatic conceptual apparatus; and can design, develop, and improve simple JavaScript programs.",
+        links: {
+            site: course14,
+            external: "https://www.credly.com/badges/af0d73d6-d9ab-4a40-9252-6766c6d0acbc/public_url",
+        },
+    },
+
 ]
 
 const isUdemy = (url) => url.includes("udemy.com")
@@ -347,7 +361,7 @@ const Courses = () => {
                             {/* Barra tipo ventana */}
                             <div className="flex items-center gap-2 border-b border-line bg-surface px-4 py-3">
                                 <span className="truncate font-mono text-xs text-muted">
-                                    {selected.title}.png
+                                    {selected.title}.webp
                                 </span>
                                 <span className="ml-auto hidden font-mono text-xs text-muted sm:block">
                                     esc para cerrar
