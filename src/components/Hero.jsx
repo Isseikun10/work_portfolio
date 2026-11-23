@@ -1,5 +1,5 @@
 import { FiDownload } from "react-icons/fi"
-import profilepic from "../assets/profpic.png"
+import profilepic from "../assets/profpic.webp"
 import CV from "../assets/Curriculum/CV.pdf"
 import { NAME, SOCIALS, SPECS, TITLES, YEARS_LABEL } from "../data/profile"
 
