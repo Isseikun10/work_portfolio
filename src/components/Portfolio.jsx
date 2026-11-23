@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { AiOutlineGithub } from "react-icons/ai"
 import { FiExternalLink } from "react-icons/fi"
-import project1 from "../assets/Project/project1.png"
-import project2 from "../assets/Project/project2.png"
-import project3 from "../assets/Project/project3.png"
+import project1 from "../assets/Project/project1.webp"
+import project2 from "../assets/Project/project2.webp"
+import project3 from "../assets/Project/project3.webp"
 
 const projects = [
     {
